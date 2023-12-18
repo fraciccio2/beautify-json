@@ -1,0 +1,71 @@
+<div class="container-fluid">
+  <div class="row m-0 w-100 pt-5 h-100">
+    <div class="col-5 text-center data-col">
+      <div class="card">
+        <div class="card-header d-flex justify-content-end">
+          <div class="my-auto">
+            <i
+              class="bi bi-trash3-fill me-2"
+              (click)="cleanInputText.emit()"
+            ></i>
+            <i
+              class="bi bi-copy"
+              [ngbTooltip]="tipContent"
+              [autoClose]="false"
+              (mouseleave)="isCopy = false"
+              (cdkCopyToClipboardCopied)="isCopy = true"
+              [cdkCopyToClipboard]="formControlInputText?.value"
+            ></i>
+            <ng-template #tipContent>
+              {{ !isCopy ? 'Copy' : 'Copied' }}
+            </ng-template>
+          </div>
+        </div>
+        <div class="card-body row" *ngIf="formControlInputText">
+          <div class="col-1 text-end line-container">
+            <div class="line-number"></div>
+          </div>
+          <div class="col-11 textarea-container">
+            <textarea
+              class="form-control custom-textarea"
+              [formControl]="formControlInputText"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-2 text-center">
+      <button
+        class="btn btn-primary"
+        [disabled]="formControlInputText?.invalid"
+        (click)="validateJSON.emit()"
+      >
+        Validate
+      </button>
+      <div
+        *ngIf="showAlert"
+        class="mt-3 alert"
+        [ngClass]="{
+          'alert-danger': validateError,
+          'alert-success': !validateError
+        }"
+      >
+        {{ validateError ? validateError : 'Valid JSON' }}
+      </div>
+    </div>
+    <div class="col-5 text-center data-col">
+      <div class="card">
+        <div class="card-header d-flex">
+          <div class="my-auto">
+            <select class="form-select w-auto py-0">
+              <option>Beautify</option>
+            </select>
+          </div>
+        </div>
+        <div class="card-body">
+          <pre class="text-start mb-0" [innerHTML]="beautifyJSON"></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

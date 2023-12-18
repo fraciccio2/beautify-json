@@ -1,0 +1,80 @@
+$card-header-height: 2.5rem;
+.container-fluid {
+  background-color: var(--blue-color);
+  height: calc(100vh - var(--navbar-height));
+
+  .data-col {
+    max-height: 100%;
+    .card {
+      height: 90%;
+
+      .card-header {
+        height: $card-header-height;
+        .bi {
+          cursor: pointer;
+          color: var(--blue-color);
+        }
+      }
+
+      .card-body {
+        padding: 0;
+        max-height: 100%;
+        overflow-y: auto;
+        margin-right: 0 !important;
+
+        .line-container {
+          border-right: 1px solid var(--bs-card-border-color);
+
+          .line-number {
+            left: 0;
+            top: 0;
+            bottom: 0;
+            pointer-events: none;
+          }
+        }
+
+        .textarea-container {
+          padding-left: 0 !important;
+          padding-right: calc(calc(var(--bs-gutter-x) * .5) - 1px) !important;
+
+          .custom-textarea {
+            height: 100%;
+            resize: none;
+            padding: 0;
+            border: 0;
+            border-radius: 0 !important;
+            border-bottom-right-radius: var(--bs-border-radius) !important;
+            box-sizing: border-box;
+            overflow-y: hidden;
+
+            &:focus {
+              box-shadow: none;
+            }
+          }
+        }
+
+        ::ng-deep pre {
+          .string {
+            color: green;
+          }
+
+          .number {
+            color: darkorange;
+          }
+
+          .boolean {
+            color: blue;
+          }
+
+          .null {
+            color: magenta;
+          }
+
+          .key {
+            color: red;
+          }
+        }
+      }
+    }
+  }
+}
