@@ -1,7 +1,5 @@
 {
-  "root": true,
   "ignorePatterns": ["!**/*"],
-  "plugins": ["@nx"],
   "overrides": [
     {
       "files": ["*.ts"],
@@ -38,11 +36,21 @@
               },
               {
                 "sourceTag": "feature",
-                "onlyDependOnLibsWithTags": ["sub-feature", "ui", "util", "data-access"]
+                "onlyDependOnLibsWithTags": [
+                  "sub-feature",
+                  "ui",
+                  "util",
+                  "data-access"
+                ]
               },
               {
                 "sourceTag": "sub-feature",
-                "onlyDependOnLibsWithTags": ["sub-feature", "ui", "util", "data-access"]
+                "onlyDependOnLibsWithTags": [
+                  "sub-feature",
+                  "ui",
+                  "util",
+                  "data-access"
+                ]
               },
               {
                 "sourceTag": "ui",
@@ -62,5 +70,6 @@
       "extends": ["plugin:@nx/angular-template"],
       "rules": {}
     }
-  ]
+  ],
+  "extends": ["./.eslintrc.base.json"]
 }

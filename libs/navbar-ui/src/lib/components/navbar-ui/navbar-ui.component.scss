@@ -1,0 +1,12 @@
+.navbar {
+  height: var(--navbar-height);
+  border-bottom: 1px solid var(--blue-color);
+
+  .navbar-brand {
+    padding-top: 0 !important;
+
+    img {
+      margin-left: 1rem;
+    }
+  }
+}
