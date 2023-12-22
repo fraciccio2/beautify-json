@@ -1,0 +1,31 @@
+<ul class="list-node" *ngIf="jsonData">
+  <li *ngFor="let item of getObjectKeys(jsonData)" class="text-start">
+    <span
+      (click)="toggleNode2(item); $event.stopPropagation()"
+      class="toggle-icon"
+    >
+      <span *ngIf="isObject(jsonData[item]) && jsonData[item] !== null">
+        <i
+          class="d-inline bi"
+          [ngClass]="
+            expandedNodes.includes(jsonData[item])
+              ? 'bi-caret-down-fill'
+              : 'bi-caret-right-fill'
+          "
+        ></i>
+        {{ item }}:
+        <beautify-json-viewer-ui
+          [jsonData]="jsonData[item]"
+          [expandedNodes]="expandedNodes"
+          *ngIf="expandedNodes?.includes(item); else object"
+        ></beautify-json-viewer-ui>
+        <ng-template #object
+          ><div class="fw-bold d-inline">{{ '{...}' }}</div></ng-template
+        >
+      </span>
+      <span *ngIf="!isObject(jsonData[item])"
+        >{{ item }} : {{ jsonData[item] }}</span
+      >
+    </span>
+  </li>
+</ul>

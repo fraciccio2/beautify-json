@@ -1,0 +1,21 @@
+::ng-deep pre {
+  .string {
+    color: #4fc5c2;
+  }
+
+  .number {
+    color: #7a7ff0;
+  }
+
+  .boolean {
+    color: #fc8c58;
+  }
+
+  .null {
+    color: #6a6a5c;
+  }
+
+  .key {
+    color: #7babf6;
+  }
+}

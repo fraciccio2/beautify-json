@@ -1,0 +1,36 @@
+<div class="card">
+  <div class="card-body d-flex flex-column">
+    <button
+      class="btn btn-primary w-100"
+      [disabled]="formControlInputText?.invalid"
+      (click)="validateJSON.emit()"
+    >
+      Validate
+      <i class="bi bi-magic ms-1"></i>
+    </button>
+    <div class="d-flex align-items-center w-100 mt-3">
+      <input
+        type="file"
+        class="d-none"
+        #input
+        (change)="readFile.emit($event)"
+      />
+      <button class="btn btn-light w-100 me-1" (click)="input.click()">
+        <i class="bi bi-upload me-1"></i>File
+      </button>
+      <button class="btn btn-light w-100 ms-1">
+        <i class="bi bi-link me-1"></i>URL
+      </button>
+    </div>
+    <div
+      *ngIf="showAlert"
+      class="mt-auto alert"
+      [ngClass]="{
+        'alert-danger': validateError,
+        'alert-success': !validateError
+      }"
+    >
+      {{ validateError ? validateError : 'Valid JSON' }}
+    </div>
+  </div>
+</div>

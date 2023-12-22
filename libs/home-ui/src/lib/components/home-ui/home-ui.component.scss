@@ -46,32 +46,11 @@ $card-header-height: 2.5rem;
             border-bottom-right-radius: var(--bs-border-radius) !important;
             box-sizing: border-box;
             overflow-y: hidden;
+            white-space: nowrap;
 
             &:focus {
               box-shadow: none;
             }
-          }
-        }
-
-        ::ng-deep pre {
-          .string {
-            color: green;
-          }
-
-          .number {
-            color: darkorange;
-          }
-
-          .boolean {
-            color: blue;
-          }
-
-          .null {
-            color: magenta;
-          }
-
-          .key {
-            color: red;
           }
         }
       }

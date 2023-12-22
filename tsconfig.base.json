@@ -16,7 +16,9 @@
     "baseUrl": ".",
     "paths": {
       "@beautify-json/home-feature": ["libs/home-feature/src/index.ts"],
+      "@beautify-json/home-sub-feature": ["libs/home-sub-feature/src/index.ts"],
       "@beautify-json/home-ui": ["libs/home-ui/src/index.ts"],
+      "@beautify-json/home-util": ["libs/home-util/src/index.ts"],
       "@beautify-json/navbar-feature": ["libs/navbar-feature/src/index.ts"],
       "@beautify-json/navbar-ui": ["libs/navbar-ui/src/index.ts"]
     }
