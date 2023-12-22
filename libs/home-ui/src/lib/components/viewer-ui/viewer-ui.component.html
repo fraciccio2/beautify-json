@@ -1,29 +1,39 @@
 <ul class="list-node" *ngIf="jsonData">
   <li *ngFor="let item of getObjectKeys(jsonData)" class="text-start">
-    <span
-      (click)="toggleNode2(item); $event.stopPropagation()"
-      class="toggle-icon"
-    >
-      <span *ngIf="isObject(jsonData[item]) && jsonData[item] !== null">
-        <i
-          class="d-inline bi"
-          [ngClass]="
-            expandedNodes.includes(jsonData[item])
-              ? 'bi-caret-down-fill'
-              : 'bi-caret-right-fill'
-          "
-        ></i>
-        {{ item }}:
-        <beautify-json-viewer-ui
-          [jsonData]="jsonData[item]"
-          [expandedNodes]="expandedNodes"
-          *ngIf="expandedNodes?.includes(item); else object"
-        ></beautify-json-viewer-ui>
-        <ng-template #object
-          ><div class="fw-bold d-inline">{{ '{...}' }}</div></ng-template
-        >
+    <span class="toggle-icon">
+      <span
+        *ngIf="isObject(jsonData[item]) && jsonData[item] !== null"
+        class="row m-0 w-100"
+      >
+        <div class="col-1 text-end ps-0">
+          <i
+            (click)="toggleNode(item); $event.stopPropagation()"
+            class="bi"
+            [ngClass]="
+              expandedNodes.includes(jsonData[item])
+                ? 'bi-caret-down-fill'
+                : 'bi-caret-right-fill'
+            "
+          ></i>
+        </div>
+        <div class="col-11 ps-0">
+          {{ item }}:
+          <beautify-json-viewer-ui
+            [jsonData]="jsonData[item]"
+            [expandedNodes]="expandedNodes"
+            *ngIf="expandedNodes?.includes(item); else object"
+          ></beautify-json-viewer-ui>
+          <ng-template #object>
+            <div class="fw-bold d-inline" *ngIf="isArray(jsonData[item])">
+              [{{ jsonData[item].length }}]
+            </div>
+            <div class="fw-bold d-inline" *ngIf="!isArray(jsonData[item])">
+              {{ '{' + Object.keys(jsonData[item]).length + '}' }}
+            </div>
+          </ng-template>
+        </div>
       </span>
-      <span *ngIf="!isObject(jsonData[item])"
+      <span *ngIf="!isObject(jsonData[item])" class="offset-1"
         >{{ item }} : {{ jsonData[item] }}</span
       >
     </span>

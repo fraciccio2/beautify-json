@@ -9,6 +9,8 @@ export class ViewerUiComponent {
   @Input() jsonData: any;
   @Input() expandedNodes: string[] = [];
 
+  protected readonly Object = Object;
+
   getObjectKeys(obj: unknown): string[] {
     if (typeof obj === 'object' && obj !== null) {
       return Object.keys(obj);
@@ -20,7 +22,11 @@ export class ViewerUiComponent {
     return typeof obj === 'object' && obj !== null;
   }
 
-  toggleNode2(item: string): void {
+  isArray(obj: unknown): boolean {
+    return Array.isArray(obj);
+  }
+
+  toggleNode(item: string): void {
     if (this.isObject(this.jsonData[item]) && this.jsonData[item] !== null) {
       if (this.expandedNodes.includes(item)) {
         this.expandedNodes = this.expandedNodes.filter((node) => node !== item);

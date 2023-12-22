@@ -31,7 +31,7 @@ export class NavbarFeatureComponent implements OnInit {
     value: 'en',
   });
 
-  private translateService = inject(TranslateService);
+  private translate = inject(TranslateService);
 
   ngOnInit() {
     this.changeLanguage();
@@ -40,7 +40,7 @@ export class NavbarFeatureComponent implements OnInit {
   changeLanguage() {
     this.formControlLanguage.valueChanges.subscribe((changes) => {
       if (changes && changes.value) {
-        this.translateService.use(changes.value);
+        this.translate.use(changes.value);
         document.querySelector('html')?.setAttribute('lang', changes.value);
       }
     });

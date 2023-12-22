@@ -1,8 +1,14 @@
 .list-node {
   list-style-type: none;
   margin-bottom: 0;
+  padding-left: 0 !important;
 
   .toggle-icon {
     margin-right: 5px;
+    display: block;
+
+    .bi {
+      cursor: pointer;
+    }
   }
 }

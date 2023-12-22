@@ -17,6 +17,7 @@ import {
 import {
   BeautySubFeatureComponent,
   LoadDataUrlModalComponent,
+  TextSubFeatureComponent,
   ViewerSubFeatureComponent,
 } from '@beautify-json/home-sub-feature';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -32,7 +33,7 @@ import { HomeFeatureService } from '../home-feature.service';
     [beautifyJSON]="beautifyJSON"
     [validatedJSON]="validatedJSON"
     [inputs]="inputs"
-    [options]="options"
+    [options]="homeFeatureService.options"
     [formControlInputText]="formControlInputText"
     [formControlTemplate]="formControlTemplate"
     [currentTemplate]="currentTemplate"
@@ -49,21 +50,16 @@ import { HomeFeatureService } from '../home-feature.service';
 export class HomeFeatureComponent
   implements OnInit, AfterViewInit, AfterViewChecked
 {
+  private cdRef = inject(ChangeDetectorRef);
+  private modalService = inject(NgbModal);
+  private httpClient = inject(HttpClient);
+  protected homeFeatureService = inject(HomeFeatureService);
+
   formControlInputText = new FormControl('', Validators.required);
+  formControlInputTextSub = new FormControl('');
   formControlTemplate = new FormControl(1, Validators.required);
 
   currentTemplate: Type<JsonTemplateType> | null = null;
-
-  options = [
-    {
-      label: 'Beautify',
-      id: 1,
-    },
-    {
-      label: 'Tree',
-      id: 2,
-    },
-  ];
 
   showAlert = false;
   validateError = '';
@@ -73,14 +69,12 @@ export class HomeFeatureComponent
   collapseAllEmit: EventEmitter<void> = new EventEmitter<void>();
   expandAllEmit: EventEmitter<void> = new EventEmitter<void>();
 
-  private cdRef = inject(ChangeDetectorRef);
-  private modalService = inject(NgbModal);
-  private httpClient = inject(HttpClient);
-  private homeFeatureService = inject(HomeFeatureService);
-
   ngOnInit() {
     this.formControlInputText.valueChanges.subscribe((changes) => {
-      this.updateLineNumbers(changes ?? '');
+      this.updateLineNumbers(changes ?? '', '.line-number-left');
+    });
+    this.formControlInputTextSub.valueChanges.subscribe((changes) => {
+      this.updateLineNumbers(changes ?? '', '.line-number-right');
     });
     this.formControlTemplate.valueChanges.subscribe((changes) => {
       this.changeTemplate(changes ?? JsonTemplateEnum.BEAUTY);
@@ -88,7 +82,7 @@ export class HomeFeatureComponent
   }
 
   ngAfterViewInit() {
-    this.updateLineNumbers('');
+    this.updateLineNumbers('', '.line-number-left');
     this.changeTemplate(JsonTemplateEnum.BEAUTY);
   }
 
@@ -112,12 +106,19 @@ export class HomeFeatureComponent
         };
         this.currentTemplate = ViewerSubFeatureComponent;
         break;
+      case JsonTemplateEnum.TEXT:
+        this.formControlInputTextSub.patchValue(this.validatedJSON);
+        this.inputs = {
+          formControlInputTextSub: this.formControlInputTextSub,
+        };
+        this.currentTemplate = TextSubFeatureComponent;
+        break;
     }
   }
 
-  updateLineNumbers(changes: string) {
+  updateLineNumbers(changes: string, querySelector: string) {
     const lineNumbersContainer = document.querySelector(
-      '.line-number'
+      querySelector
     ) as HTMLDivElement;
     const lines = changes?.split('\n');
     if (lineNumbersContainer) {

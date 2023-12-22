@@ -4,6 +4,21 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class HomeFeatureService {
+  options = [
+    {
+      label: 'HomeFeature.Beautify',
+      id: 1,
+    },
+    {
+      label: 'HomeFeature.Tree',
+      id: 2,
+    },
+    {
+      label: 'HomeFeature.Text',
+      id: 3,
+    },
+  ];
+
   syntaxHighlight(json: string) {
     json = json
       .replace(/&/g, '&amp;')

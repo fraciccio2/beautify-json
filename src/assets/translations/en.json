@@ -1,4 +1,7 @@
 {
+  "HomeFeature.Beautify": "Beautify",
+  "HomeFeature.Tree": "Tree",
+  "HomeFeature.Text": "Text",
   "HomeUi.Validate": "Validate",
   "HomeUi.File": "File",
   "HomeUi.URL": "URL",

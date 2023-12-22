@@ -6,7 +6,7 @@
       [formControl]="formControlTemplate"
     >
       <option *ngFor="let option of options" [ngValue]="option.id">
-        {{ option.label }}
+        {{ option.label | translate }}
       </option>
     </select>
     <i
