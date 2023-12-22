@@ -1,0 +1,23 @@
+$card-header-height: 2.5rem;
+.card {
+  height: 90%;
+
+  .card-header {
+    height: $card-header-height;
+    .bi {
+      cursor: pointer;
+      color: var(--blue-color);
+
+      &:hover {
+        color: #82a9b7;
+      }
+    }
+  }
+
+  .card-body {
+    padding: 0;
+    max-height: 100%;
+    overflow-y: auto;
+    margin-right: 0 !important;
+  }
+}

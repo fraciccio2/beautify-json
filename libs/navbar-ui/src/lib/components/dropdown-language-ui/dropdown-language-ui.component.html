@@ -1,0 +1,20 @@
+<div ngbDropdown class="dropdown-language d-inline-block div-dropdown">
+  <button type="button" class="btn btn-dropdown" ngbDropdownToggle>
+    <img [src]="formControlLanguage?.value?.img" class="me-2" />
+    {{ formControlLanguage?.value?.text }}
+  </button>
+  <div ngbDropdownMenu class="dropdown-language__menu">
+    <button
+      ngbDropdownItem
+      *ngFor="let language of languages"
+      class="d-flex align-items-center"
+      (click)="formControlLanguage?.patchValue(language)"
+    >
+      <img
+        [src]="language.img"
+        class="dropdown-language__menu__flag-icon me-2"
+      />
+      {{ language.text }}
+    </button>
+  </div>
+</div>

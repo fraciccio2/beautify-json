@@ -1,10 +1,6 @@
 import { Component, EventEmitter, Input, Output, Type } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import {
-  InputTemplateModel,
-  JsonTemplateEnum,
-  JsonTemplateType,
-} from '@beautify-json/home-util';
+import { InputTemplateModel, JsonTemplateType } from '@beautify-json/home-util';
 
 @Component({
   selector: 'beautify-json-home-ui',
@@ -25,9 +21,9 @@ export class HomeUiComponent {
   @Output() cleanInputText = new EventEmitter<void>();
   @Output() collapseAll = new EventEmitter<void>();
   @Output() expandAll = new EventEmitter<void>();
+  @Output() loadDataFromUrl = new EventEmitter<void>();
+  @Output() downloadJsonFile = new EventEmitter<void>();
   @Output() readFile = new EventEmitter<Event>();
 
   isCopy = false;
-
-  JsonTemplateEnum = JsonTemplateEnum;
 }

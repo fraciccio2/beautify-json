@@ -1,88 +1,34 @@
 <div class="container-fluid">
   <div class="row m-0 w-100 pt-5 h-100">
     <div class="col-5 text-center data-col">
-      <div class="card">
-        <div class="card-header d-flex justify-content-end align-items-center">
-          <i class="bi bi-trash3-fill me-2" (click)="cleanInputText.emit()"></i>
-          <i
-            class="bi bi-copy"
-            [ngbTooltip]="tipContent"
-            [autoClose]="false"
-            (mouseleave)="isCopy = false"
-            (cdkCopyToClipboardCopied)="isCopy = true"
-            [cdkCopyToClipboard]="formControlInputText?.value"
-          ></i>
-          <ng-template #tipContent>
-            {{ !isCopy ? 'Copy' : 'Copied' }}
-          </ng-template>
-        </div>
-        <div class="card-body row" *ngIf="formControlInputText">
-          <div class="col-1 text-end line-container">
-            <div class="line-number"></div>
-          </div>
-          <div class="col-11 textarea-container">
-            <textarea
-              class="form-control custom-textarea"
-              [formControl]="formControlInputText"
-            ></textarea>
-          </div>
-        </div>
-      </div>
+      <beautify-json-left-card-ui
+        [formControlInputText]="formControlInputText"
+        (cleanInputText)="cleanInputText.emit()"
+      ></beautify-json-left-card-ui>
     </div>
     <div class="col-2 text-center">
       <beautify-json-action-ui
         [showAlert]="showAlert"
         [validateError]="validateError"
+        [validatedJSON]="validatedJSON"
         [formControlInputText]="formControlInputText"
         (validateJSON)="validateJSON.emit()"
+        (loadDataFromUrl)="loadDataFromUrl.emit()"
+        (downloadJsonFile)="downloadJsonFile.emit()"
         (readFile)="readFile.emit($event)"
       ></beautify-json-action-ui>
     </div>
     <div class="col-5 text-center data-col">
-      <div class="card">
-        <div class="card-header d-flex align-items-center">
-          <select
-            class="form-select w-auto py-0"
-            *ngIf="formControlTemplate"
-            [formControl]="formControlTemplate"
-          >
-            <option *ngFor="let option of options" [ngValue]="option.id">
-              {{ option.label }}
-            </option>
-          </select>
-          <i
-            *ngIf="
-              beautifyJSON &&
-              validatedJSON &&
-              formControlTemplate?.value === JsonTemplateEnum.BEAUTY
-            "
-            class="bi bi-copy ms-auto"
-            [ngbTooltip]="tipContent"
-            [autoClose]="false"
-            (mouseleave)="isCopy = false"
-            (cdkCopyToClipboardCopied)="isCopy = true"
-            [cdkCopyToClipboard]="validatedJSON"
-          ></i>
-          <ng-template #tipContent>
-            {{ !isCopy ? 'Copy' : 'Copied' }}
-          </ng-template>
-          <div
-            *ngIf="
-              formControlTemplate?.value === JsonTemplateEnum.VIEWER &&
-              validatedJSON
-            "
-            class="ms-auto"
-          >
-            <i class="bi bi-arrows-expand me-3" (click)="expandAll.emit()"></i>
-            <i class="bi bi-arrows-collapse" (click)="collapseAll.emit()"></i>
-          </div>
-        </div>
-        <div class="card-body">
-          <ng-container
-            *ngComponentOutlet="currentTemplate; inputs: $any(inputs)"
-          ></ng-container>
-        </div>
-      </div>
+      <beautify-json-right-card-ui
+        [beautifyJSON]="beautifyJSON"
+        [validatedJSON]="validatedJSON"
+        [inputs]="inputs"
+        [options]="options"
+        [formControlTemplate]="formControlTemplate"
+        [currentTemplate]="currentTemplate"
+        (collapseAll)="collapseAll.emit()"
+        (expandAll)="expandAll.emit()"
+      ></beautify-json-right-card-ui>
     </div>
   </div>
 </div>

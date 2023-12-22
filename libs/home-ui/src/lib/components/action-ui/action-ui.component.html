@@ -5,7 +5,7 @@
       [disabled]="formControlInputText?.invalid"
       (click)="validateJSON.emit()"
     >
-      Validate
+      {{ 'HomeUi.Validate' | translate }}
       <i class="bi bi-magic ms-1"></i>
     </button>
     <div class="d-flex align-items-center w-100 mt-3">
@@ -16,12 +16,20 @@
         (change)="readFile.emit($event)"
       />
       <button class="btn btn-light w-100 me-1" (click)="input.click()">
-        <i class="bi bi-upload me-1"></i>File
+        <i class="bi bi-upload me-1"></i>{{ 'HomeUi.File' | translate }}
       </button>
-      <button class="btn btn-light w-100 ms-1">
-        <i class="bi bi-link me-1"></i>URL
+      <button class="btn btn-light w-100 ms-1" (click)="loadDataFromUrl.emit()">
+        <i class="bi bi-link me-1"></i>{{ 'HomeUi.URL' | translate }}
       </button>
     </div>
+    <button
+      class="btn btn-light w-100 mt-3"
+      [disabled]="!validatedJSON"
+      (click)="downloadJsonFile.emit()"
+    >
+      <i class="bi bi-file-earmark-arrow-down-fill me-1"></i
+      >{{ 'HomeUi.Download' | translate }}
+    </button>
     <div
       *ngIf="showAlert"
       class="mt-auto alert"
@@ -30,7 +38,7 @@
         'alert-success': !validateError
       }"
     >
-      {{ validateError ? validateError : 'Valid JSON' }}
+      {{ validateError ? validateError : ('HomeUi.ValidJ' | translate) }}
     </div>
   </div>
 </div>

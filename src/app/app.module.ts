@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavbarFeatureModule } from '@beautify-json/navbar-feature';
 import { HomeFeatureModule } from '@beautify-json/home-feature';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +16,9 @@ import { HomeFeatureModule } from '@beautify-json/home-feature';
         redirectTo: '',
       },
     ]),
+    TranslateModule.forRoot({
+      defaultLanguage: 'en',
+    }),
     NavbarFeatureModule,
     HomeFeatureModule,
   ],

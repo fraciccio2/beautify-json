@@ -1,0 +1,52 @@
+$flagSize: 1.563rem;
+
+.btn-dropdown {
+  background-color: var(--grey-lighten5);
+
+  &:focus-visible {
+    box-shadow: inset 0 0 0 0.125rem var(--grey-darken3);
+  }
+
+  img {
+    width: $flagSize;
+    height: $flagSize;
+  }
+}
+
+.btn-dropdown:hover,
+.btn-dropdown:active,
+btn-dropdown:focus,
+btn-dropdown:focus-visible,
+.btn:focus {
+  border-color: var(--border) !important;
+  background-color: var(--grey-lighten4);
+}
+
+.dropdown-menu {
+  min-width: auto;
+}
+
+.dropdown-language {
+  &__menu {
+    position: absolute;
+
+    &__flag-icon {
+      width: $flagSize;
+      height: $flagSize;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .dropdown-language {
+    &__menu {
+      width: 100%;
+    }
+  }
+
+  .dropdown {
+    &-toggle {
+      width: 100%;
+    }
+  }
+}

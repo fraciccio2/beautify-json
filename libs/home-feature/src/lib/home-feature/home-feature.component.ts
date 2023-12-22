@@ -16,8 +16,13 @@ import {
 } from '@beautify-json/home-util';
 import {
   BeautySubFeatureComponent,
+  LoadDataUrlModalComponent,
   ViewerSubFeatureComponent,
 } from '@beautify-json/home-sub-feature';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClient } from '@angular/common/http';
+import { take } from 'rxjs';
+import { HomeFeatureService } from '../home-feature.service';
 
 @Component({
   selector: 'beautify-json-home-feature',
@@ -35,6 +40,8 @@ import {
     (cleanInputText)="cleanInputText()"
     (collapseAll)="collapseAll()"
     (expandAll)="expandAll()"
+    (loadDataFromUrl)="loadDataFromUrl()"
+    (downloadJsonFile)="downloadJsonFile()"
     (readFile)="readFile($event)"
   ></beautify-json-home-ui>`,
   styles: ``,
@@ -67,6 +74,9 @@ export class HomeFeatureComponent
   expandAllEmit: EventEmitter<void> = new EventEmitter<void>();
 
   private cdRef = inject(ChangeDetectorRef);
+  private modalService = inject(NgbModal);
+  private httpClient = inject(HttpClient);
+  private homeFeatureService = inject(HomeFeatureService);
 
   ngOnInit() {
     this.formControlInputText.valueChanges.subscribe((changes) => {
@@ -127,7 +137,9 @@ export class HomeFeatureComponent
         const parse = JSON.parse(this.formControlInputText?.value);
         this.validatedJSON = JSON.stringify(parse, null, '\t');
         this.validateError = '';
-        this.beautifyJSON = this.syntaxHighlight(this.validatedJSON);
+        this.beautifyJSON = this.homeFeatureService.syntaxHighlight(
+          this.validatedJSON
+        );
         this.changeTemplate(
           this.formControlTemplate?.value ?? JsonTemplateEnum.BEAUTY
         );
@@ -143,31 +155,6 @@ export class HomeFeatureComponent
     this.formControlInputText.reset();
     this.showAlert = false;
     this.validateError = '';
-  }
-
-  syntaxHighlight(json: string) {
-    json = json
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;');
-    return json.replace(
-      /("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+-]?\d+)?)/g,
-      (match) => {
-        let cls = 'number';
-        if (/^"/.test(match)) {
-          if (/:$/.test(match)) {
-            cls = 'key';
-          } else {
-            cls = 'string';
-          }
-        } else if (/true|false/.test(match)) {
-          cls = 'boolean';
-        } else if (/null/.test(match)) {
-          cls = 'null';
-        }
-        return '<span class="' + cls + '">' + match + '</span>';
-      }
-    );
   }
 
   collapseAll() {
@@ -189,5 +176,43 @@ export class HomeFeatureComponent
     if (file) {
       fileReader.readAsText(file);
     }
+  }
+
+  loadDataFromUrl() {
+    const modal = this.modalService.open(LoadDataUrlModalComponent, {
+      centered: true,
+    });
+    modal.result
+      .then((resp: { url: string }) => {
+        this.httpClient
+          .get<object | string>(resp.url)
+          .pipe(take(1))
+          .subscribe({
+            next: (json) => {
+              if (typeof json === 'string') {
+                this.formControlInputText.patchValue(json);
+              } else if (typeof json === 'object') {
+                try {
+                  const stringObj = JSON.stringify(json);
+                  this.formControlInputText.patchValue(stringObj);
+                } catch (e) {
+                  if (e instanceof Error) {
+                    this.showAlert = true;
+                    this.validateError = e.message;
+                  }
+                }
+              }
+            },
+            error: (error) => {
+              this.showAlert = true;
+              this.validateError = error.message ?? 'Error, not valid URL';
+            },
+          });
+      })
+      .catch(() => {});
+  }
+
+  downloadJsonFile() {
+    this.homeFeatureService.downloadJsonFile(this.validatedJSON);
   }
 }

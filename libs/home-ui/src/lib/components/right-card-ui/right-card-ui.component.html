@@ -1,0 +1,43 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center">
+    <select
+      class="form-select w-auto py-0"
+      *ngIf="formControlTemplate"
+      [formControl]="formControlTemplate"
+    >
+      <option *ngFor="let option of options" [ngValue]="option.id">
+        {{ option.label }}
+      </option>
+    </select>
+    <i
+      *ngIf="
+        beautifyJSON &&
+        validatedJSON &&
+        formControlTemplate?.value === JsonTemplateEnum.BEAUTY
+      "
+      class="bi bi-copy ms-auto"
+      [ngbTooltip]="tipContent"
+      [autoClose]="false"
+      (mouseleave)="isCopy = false"
+      (cdkCopyToClipboardCopied)="isCopy = true"
+      [cdkCopyToClipboard]="validatedJSON"
+    ></i>
+    <ng-template #tipContent>
+      {{ (!isCopy ? 'HomeUi.Copy' : 'HomeUi.Copied') | translate }}
+    </ng-template>
+    <div
+      *ngIf="
+        formControlTemplate?.value === JsonTemplateEnum.VIEWER && validatedJSON
+      "
+      class="ms-auto"
+    >
+      <i class="bi bi-arrows-expand me-3" (click)="expandAll.emit()"></i>
+      <i class="bi bi-arrows-collapse" (click)="collapseAll.emit()"></i>
+    </div>
+  </div>
+  <div class="card-body">
+    <ng-container
+      *ngComponentOutlet="currentTemplate; inputs: $any(inputs)"
+    ></ng-container>
+  </div>
+</div>

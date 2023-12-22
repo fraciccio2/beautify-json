@@ -9,7 +9,10 @@ import { FormControl } from '@angular/forms';
 export class ActionUiComponent {
   @Input() showAlert: boolean | undefined;
   @Input() validateError: string | undefined;
+  @Input() validatedJSON: string | undefined;
   @Input() formControlInputText: FormControl | undefined;
   @Output() validateJSON = new EventEmitter<void>();
+  @Output() loadDataFromUrl = new EventEmitter<void>();
+  @Output() downloadJsonFile = new EventEmitter<void>();
   @Output() readFile = new EventEmitter<Event>();
 }

@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavbarUiComponent } from './components/navbar-ui/navbar-ui.component';
+import { DropdownLanguageUiComponent, NavbarUiComponent } from './components';
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  imports: [CommonModule],
-  exports: [NavbarUiComponent],
-  declarations: [NavbarUiComponent]
+  imports: [CommonModule, NgbDropdownModule],
+  exports: [NavbarUiComponent, DropdownLanguageUiComponent],
+  declarations: [NavbarUiComponent, DropdownLanguageUiComponent],
 })
 export class NavbarUiModule {}
