@@ -23,6 +23,7 @@ export class HomeUiComponent {
   @Output() expandAll = new EventEmitter<void>();
   @Output() loadDataFromUrl = new EventEmitter<void>();
   @Output() downloadJsonFile = new EventEmitter<void>();
+  @Output() printJson = new EventEmitter<void>();
   @Output() readFile = new EventEmitter<Event>();
 
   isCopy = false;

@@ -22,7 +22,7 @@ import { FormControl, Validators } from '@angular/forms';
     <div class="modal-footer">
       <button
         [disabled]="formControlUrl.invalid"
-        class="btn btn-success"
+        class="btn btn-success w-100"
         (click)="close()"
       >
         Submit
@@ -32,8 +32,10 @@ import { FormControl, Validators } from '@angular/forms';
   styles: [
     `
       .modal-footer {
+        border: 0 !important;
         .btn {
-          border-radius: var(--border-radius-c);
+          margin-top: 2rem;
+          border-radius: 4px;
         }
       }
     `,
