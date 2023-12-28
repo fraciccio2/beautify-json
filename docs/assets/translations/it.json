@@ -13,5 +13,9 @@
   "HomeUi.ValidJ": "JSON Valido",
   "HomeUi.Copy": "Copia",
   "HomeUi.Copied": "Copiato",
-  "HomeUi.Print": "Stampa"
+  "HomeUi.Print": "Stampa",
+  "HomeUi.Delete": "Cancella",
+  "HomeUi.Expand": "Espandi sezione",
+  "HomeUi.Contract": "Comprimi sezione",
+  "HomeUi.Created": "Copyright © Francesco Nicolò Giacomazzo. Tutti i diritti riservati."
 }
