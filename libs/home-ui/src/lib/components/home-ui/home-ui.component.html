@@ -5,6 +5,7 @@
         [formControlInputText]="formControlInputText"
         (cleanInputText)="cleanInputText.emit()"
         (printJson)="printJson.emit()"
+        (expandSection)="expandSection.emit($event)"
       ></beautify-json-left-card-ui>
     </div>
     <div class="col-2 text-center">
@@ -29,13 +30,43 @@
         [currentTemplate]="currentTemplate"
         (collapseAll)="collapseAll.emit()"
         (expandAll)="expandAll.emit()"
+        (expandSection)="expandSection.emit($event)"
       ></beautify-json-right-card-ui>
     </div>
   </div>
 </div>
+<beautify-json-footer-ui></beautify-json-footer-ui>
 <div
   class="d-flex justify-content-center w-100 h-100 position-fixed overlay"
   *ngIf="showLoader"
 >
   <div class="spinner-grow big-spinner position-fixed" role="status"></div>
+</div>
+<div
+  class="d-flex justify-content-center w-100 h-100 position-fixed overlay"
+  *ngIf="showExpandedUi || showExpandedSub"
+>
+  <beautify-json-left-card-ui
+    *ngIf="showExpandedUi"
+    class="d-block w-100 h-100"
+    [showExpanded]="showExpandedUi"
+    [formControlInputText]="formControlInputText"
+    (cleanInputText)="cleanInputText.emit()"
+    (printJson)="printJson.emit()"
+    (contractSection)="contractSection.emit($event)"
+  ></beautify-json-left-card-ui>
+  <beautify-json-right-card-ui
+    *ngIf="showExpandedSub"
+    class="d-block w-100 h-100"
+    [showExpanded]="showExpandedSub"
+    [beautifyJSON]="beautifyJSON"
+    [validatedJSON]="validatedJSON"
+    [inputs]="inputs"
+    [options]="options"
+    [formControlTemplate]="formControlTemplate"
+    [currentTemplate]="currentTemplate"
+    (collapseAll)="collapseAll.emit()"
+    (expandAll)="expandAll.emit()"
+    (contractSection)="contractSection.emit($event)"
+  ></beautify-json-right-card-ui>
 </div>

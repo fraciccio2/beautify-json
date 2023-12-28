@@ -1,18 +1,34 @@
-<div class="card">
+<div class="card" [ngClass]="{ 'h-100': showExpanded }">
   <div class="card-header d-flex justify-content-end align-items-center">
     <i
       class="bi bi-printer-fill me-2"
       [ngbTooltip]="'HomeUi.Print' | translate"
       (click)="printJson.emit()"
     ></i>
-    <i class="bi bi-trash3-fill me-2" (click)="cleanInputText.emit()"></i>
     <i
-      class="bi bi-copy"
+      class="bi bi-trash3-fill me-2"
+      (click)="cleanInputText.emit()"
+      [ngbTooltip]="'HomeUi.Delete' | translate"
+    ></i>
+    <i
+      class="bi bi-copy me-2"
       [ngbTooltip]="tipContent"
       [autoClose]="false"
       (mouseleave)="isCopy = false"
       (cdkCopyToClipboardCopied)="isCopy = true"
       [cdkCopyToClipboard]="formControlInputText?.value"
+    ></i>
+    <i
+      class="bi bi-arrows-angle-expand"
+      [ngbTooltip]="'HomeUi.Expand' | translate"
+      (click)="expandSection.emit(RightOrLeftTemplateEnum.left)"
+      *ngIf="!showExpanded"
+    ></i>
+    <i
+      class="bi bi-arrows-angle-contract"
+      [ngbTooltip]="'HomeUi.Contract' | translate"
+      *ngIf="showExpanded"
+      (click)="contractSection.emit(RightOrLeftTemplateEnum.left)"
     ></i>
     <ng-template #tipContent>
       {{ (!isCopy ? 'HomeUi.Copy' : 'HomeUi.Copied') | translate }}
@@ -21,7 +37,16 @@
   <div class="card-body" *ngIf="formControlInputText">
     <div class="row m-0 w-100 h-100">
       <div class="col-auto line-container">
-        <div class="line-number-left"></div>
+        <div class="line-number-left">
+          <div
+            *ngFor="
+              let _ of formControlInputText?.value?.split('\n');
+              index as i
+            "
+          >
+            {{ i + 1 }}
+          </div>
+        </div>
       </div>
       <div class="col textarea-container">
         <textarea

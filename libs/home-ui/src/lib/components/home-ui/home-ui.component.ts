@@ -1,6 +1,10 @@
 import { Component, EventEmitter, Input, Output, Type } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { InputTemplateModel, JsonTemplateType } from '@beautify-json/home-util';
+import {
+  InputTemplateModel,
+  JsonTemplateType,
+  RightOrLeftTemplateEnum,
+} from '@beautify-json/home-util';
 
 @Component({
   selector: 'beautify-json-home-ui',
@@ -10,6 +14,8 @@ import { InputTemplateModel, JsonTemplateType } from '@beautify-json/home-util';
 export class HomeUiComponent {
   @Input() showAlert: boolean | undefined;
   @Input() showLoader: boolean | undefined;
+  @Input() showExpandedUi: boolean | undefined;
+  @Input() showExpandedSub: boolean | undefined;
   @Input() validateError: string | undefined;
   @Input() beautifyJSON: string | undefined;
   @Input() validatedJSON: string | undefined;
@@ -25,5 +31,7 @@ export class HomeUiComponent {
   @Output() loadDataFromUrl = new EventEmitter<void>();
   @Output() downloadJsonFile = new EventEmitter<void>();
   @Output() printJson = new EventEmitter<void>();
+  @Output() expandSection = new EventEmitter<RightOrLeftTemplateEnum>();
+  @Output() contractSection = new EventEmitter<RightOrLeftTemplateEnum>();
   @Output() readFile = new EventEmitter<Event>();
 }
