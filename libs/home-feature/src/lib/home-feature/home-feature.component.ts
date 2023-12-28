@@ -13,6 +13,7 @@ import {
   InputTemplateModel,
   JsonTemplateEnum,
   JsonTemplateType,
+  RightOrLeftTemplateEnum,
 } from '@beautify-json/home-util';
 import {
   BeautySubFeatureComponent,
@@ -31,6 +32,8 @@ import { HomeFeatureService } from '../home-feature.service';
   template: ` <beautify-json-home-ui
     [showAlert]="showAlert"
     [showLoader]="showLoader"
+    [showExpandedUi]="showExpandedUi"
+    [showExpandedSub]="showExpandedSub"
     [validateError]="validateError"
     [beautifyJSON]="beautifyJSON"
     [validatedJSON]="validatedJSON"
@@ -46,6 +49,16 @@ import { HomeFeatureService } from '../home-feature.service';
     (loadDataFromUrl)="loadDataFromUrl()"
     (downloadJsonFile)="downloadJsonFile()"
     (printJson)="printJson()"
+    (expandSection)="
+      $event === RightOrLeftTemplateEnum.left
+        ? (showExpandedUi = true)
+        : (showExpandedSub = true)
+    "
+    (contractSection)="
+      $event === RightOrLeftTemplateEnum.left
+        ? (showExpandedUi = false)
+        : (showExpandedSub = false)
+    "
     (readFile)="readFile($event)"
   ></beautify-json-home-ui>`,
   styles: ``,
@@ -57,6 +70,7 @@ export class HomeFeatureComponent
   private modalService = inject(NgbModal);
   private httpClient = inject(HttpClient);
   protected homeFeatureService = inject(HomeFeatureService);
+  protected readonly RightOrLeftTemplateEnum = RightOrLeftTemplateEnum;
 
   formControlInputText = new FormControl('', Validators.required);
   formControlInputTextSub = new FormControl('');
@@ -66,6 +80,8 @@ export class HomeFeatureComponent
 
   showAlert = false;
   showLoader = false;
+  showExpandedUi = false;
+  showExpandedSub = false;
   validateError = '';
   beautifyJSON = '';
   validatedJSON = '';
@@ -91,19 +107,12 @@ export class HomeFeatureComponent
   expandAllEmit: EventEmitter<void> = new EventEmitter<void>();
 
   ngOnInit() {
-    this.formControlInputText.valueChanges.subscribe((changes) => {
-      this.updateLineNumbers(changes ?? '', '.line-number-left');
-    });
-    this.formControlInputTextSub.valueChanges.subscribe((changes) => {
-      this.updateLineNumbers(changes ?? '', '.line-number-right');
-    });
     this.formControlTemplate.valueChanges.subscribe((changes) => {
       this.changeTemplate(changes ?? JsonTemplateEnum.BEAUTY);
     });
   }
 
   ngAfterViewInit() {
-    this.updateLineNumbers('', '.line-number-left');
     this.changeTemplate(JsonTemplateEnum.BEAUTY);
   }
 
@@ -134,21 +143,6 @@ export class HomeFeatureComponent
         };
         this.currentTemplate = TextSubFeatureComponent;
         break;
-    }
-  }
-
-  updateLineNumbers(changes: string, querySelector: string) {
-    const lineNumbersContainer = document.querySelector(
-      querySelector
-    ) as HTMLDivElement;
-    const lines = changes?.split('\n');
-    if (lineNumbersContainer) {
-      lineNumbersContainer.innerHTML = '';
-      for (let i = 1; i <= (lines.length || 1); i++) {
-        const lineNumber = document.createElement('div');
-        lineNumber.textContent = i.toString();
-        lineNumbersContainer.appendChild(lineNumber);
-      }
     }
   }
 

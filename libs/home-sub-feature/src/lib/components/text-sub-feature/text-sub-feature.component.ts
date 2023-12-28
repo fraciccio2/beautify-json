@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -16,21 +16,6 @@ import { FormControl } from '@angular/forms';
     `,
   ],
 })
-export class TextSubFeatureComponent implements AfterViewInit {
+export class TextSubFeatureComponent {
   @Input() formControlInputTextSub: FormControl | undefined;
-
-  ngAfterViewInit() {
-    const lineNumbersContainer = document.querySelector(
-      '.line-number-right'
-    ) as HTMLDivElement;
-    const lines = this.formControlInputTextSub?.value?.split('\n');
-    if (lineNumbersContainer) {
-      lineNumbersContainer.innerHTML = '';
-      for (let i = 1; i <= (lines.length || 1); i++) {
-        const lineNumber = document.createElement('div');
-        lineNumber.textContent = i.toString();
-        lineNumbersContainer.appendChild(lineNumber);
-      }
-    }
-  }
 }

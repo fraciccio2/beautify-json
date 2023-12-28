@@ -3,6 +3,7 @@ import {
   InputTemplateModel,
   JsonTemplateEnum,
   JsonTemplateType,
+  RightOrLeftTemplateEnum,
 } from '@beautify-json/home-util';
 import { FormControl } from '@angular/forms';
 
@@ -12,6 +13,7 @@ import { FormControl } from '@angular/forms';
   styleUrl: './right-card-ui.component.scss',
 })
 export class RightCardUiComponent {
+  @Input() showExpanded: boolean | undefined;
   @Input() beautifyJSON: string | undefined;
   @Input() validatedJSON: string | undefined;
   @Input() inputs: InputTemplateModel | undefined;
@@ -20,8 +22,11 @@ export class RightCardUiComponent {
   @Input() currentTemplate: Type<JsonTemplateType> | null = null;
   @Output() collapseAll = new EventEmitter<void>();
   @Output() expandAll = new EventEmitter<void>();
+  @Output() expandSection = new EventEmitter<RightOrLeftTemplateEnum>();
+  @Output() contractSection = new EventEmitter<RightOrLeftTemplateEnum>();
 
   isCopy = false;
 
   protected readonly JsonTemplateEnum = JsonTemplateEnum;
+  protected readonly RightOrLeftTemplateEnum = RightOrLeftTemplateEnum;
 }

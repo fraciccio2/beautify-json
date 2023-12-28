@@ -4,10 +4,8 @@
     border-right: 1px solid var(--bs-card-border-color);
 
     .line-number-right {
-      left: 0;
-      top: 0;
-      bottom: 0;
-      pointer-events: none;
+      display: flex;
+      flex-direction: column;
       text-align: end;
     }
   }
