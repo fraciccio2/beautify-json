@@ -1,5 +1,10 @@
 <div class="card">
   <div class="card-header d-flex justify-content-end align-items-center">
+    <i
+      class="bi bi-printer-fill me-2"
+      [ngbTooltip]="'HomeUi.Print' | translate"
+      (click)="printJson.emit()"
+    ></i>
     <i class="bi bi-trash3-fill me-2" (click)="cleanInputText.emit()"></i>
     <i
       class="bi bi-copy"

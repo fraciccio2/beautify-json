@@ -9,6 +9,7 @@ import { FormControl } from '@angular/forms';
 export class LeftCardUiComponent {
   @Input() formControlInputText: FormControl | undefined;
   @Output() cleanInputText = new EventEmitter<void>();
+  @Output() printJson = new EventEmitter<void>();
 
   isCopy = false;
 }

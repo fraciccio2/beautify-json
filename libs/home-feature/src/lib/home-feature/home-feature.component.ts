@@ -16,6 +16,7 @@ import {
 } from '@beautify-json/home-util';
 import {
   BeautySubFeatureComponent,
+  ErrorModalComponent,
   LoadDataUrlModalComponent,
   TextSubFeatureComponent,
   ViewerSubFeatureComponent,
@@ -27,7 +28,7 @@ import { HomeFeatureService } from '../home-feature.service';
 
 @Component({
   selector: 'beautify-json-home-feature',
-  template: `<beautify-json-home-ui
+  template: ` <beautify-json-home-ui
     [showAlert]="showAlert"
     [validateError]="validateError"
     [beautifyJSON]="beautifyJSON"
@@ -43,6 +44,7 @@ import { HomeFeatureService } from '../home-feature.service';
     (expandAll)="expandAll()"
     (loadDataFromUrl)="loadDataFromUrl()"
     (downloadJsonFile)="downloadJsonFile()"
+    (printJson)="printJson()"
     (readFile)="readFile($event)"
   ></beautify-json-home-ui>`,
   styles: ``,
@@ -65,6 +67,23 @@ export class HomeFeatureComponent
   validateError = '';
   beautifyJSON = '';
   validatedJSON = '';
+  printStyle = `
+    pre .string {
+      color: #4fc5c2;
+    }
+    pre .number {
+      color: #7a7ff0;
+    }
+    pre .boolean {
+      color: #fc8c58;
+    }
+    pre .null {
+      color: #6a6a5c;
+    }
+    pre .key {
+      color: #7babf6;
+    }
+  `;
   inputs: InputTemplateModel = {};
   collapseAllEmit: EventEmitter<void> = new EventEmitter<void>();
   expandAllEmit: EventEmitter<void> = new EventEmitter<void>();
@@ -215,5 +234,34 @@ export class HomeFeatureComponent
 
   downloadJsonFile() {
     this.homeFeatureService.downloadJsonFile(this.validatedJSON);
+  }
+
+  printJson() {
+    if (this.formControlInputText?.value) {
+      this.validateJSON();
+      if (this.validatedJSON) {
+        const printWindow = window.open('', '_blank');
+        printWindow?.document.write(
+          `<html lang="en"><head><style media="print">${
+            this.printStyle
+          }</style><title>Print JSON</title></head><body><pre>${this.homeFeatureService.syntaxHighlight(
+            this.validatedJSON
+          )}</pre></body></html>`
+        );
+        printWindow?.document.close();
+        printWindow?.print();
+        printWindow?.close();
+      } else {
+        const modal = this.modalService.open(ErrorModalComponent, {
+          centered: true,
+        });
+        modal.componentInstance.message = 'HomeFeature.InvalidJSON';
+      }
+    } else {
+      const modal = this.modalService.open(ErrorModalComponent, {
+        centered: true,
+      });
+      modal.componentInstance.message = 'HomeFeature.EmptyText';
+    }
   }
 }
