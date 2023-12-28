@@ -13,16 +13,18 @@
       {{ (!isCopy ? 'HomeUi.Copy' : 'HomeUi.Copied') | translate }}
     </ng-template>
   </div>
-  <div class="card-body row" *ngIf="formControlInputText">
-    <div class="col-1 text-end line-container">
-      <div class="line-number-left"></div>
-    </div>
-    <div class="col-11 textarea-container">
-      <textarea
-        spellcheck="false"
-        class="form-control custom-textarea"
-        [formControl]="formControlInputText"
-      ></textarea>
+  <div class="card-body" *ngIf="formControlInputText">
+    <div class="row m-0 w-100 h-100">
+      <div class="col-auto line-container">
+        <div class="line-number-left"></div>
+      </div>
+      <div class="col textarea-container">
+        <textarea
+          spellcheck="false"
+          class="form-control custom-textarea"
+          [formControl]="formControlInputText"
+        ></textarea>
+      </div>
     </div>
   </div>
 </div>
