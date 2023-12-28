@@ -6,3 +6,15 @@
     max-height: 100%;
   }
 }
+
+.big-spinner {
+  width: 5rem !important;
+  height: 5rem !important;
+  top: 40%;
+}
+
+.overlay {
+  top: 0;
+  z-index: 1051;
+  background: #21222080;
+}

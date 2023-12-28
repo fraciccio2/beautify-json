@@ -9,6 +9,7 @@ import { InputTemplateModel, JsonTemplateType } from '@beautify-json/home-util';
 })
 export class HomeUiComponent {
   @Input() showAlert: boolean | undefined;
+  @Input() showLoader: boolean | undefined;
   @Input() validateError: string | undefined;
   @Input() beautifyJSON: string | undefined;
   @Input() validatedJSON: string | undefined;
@@ -25,6 +26,4 @@ export class HomeUiComponent {
   @Output() downloadJsonFile = new EventEmitter<void>();
   @Output() printJson = new EventEmitter<void>();
   @Output() readFile = new EventEmitter<Event>();
-
-  isCopy = false;
 }

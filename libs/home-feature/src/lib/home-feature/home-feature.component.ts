@@ -23,13 +23,14 @@ import {
 } from '@beautify-json/home-sub-feature';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient } from '@angular/common/http';
-import { take } from 'rxjs';
+import { finalize, take } from 'rxjs';
 import { HomeFeatureService } from '../home-feature.service';
 
 @Component({
   selector: 'beautify-json-home-feature',
   template: ` <beautify-json-home-ui
     [showAlert]="showAlert"
+    [showLoader]="showLoader"
     [validateError]="validateError"
     [beautifyJSON]="beautifyJSON"
     [validatedJSON]="validatedJSON"
@@ -64,6 +65,7 @@ export class HomeFeatureComponent
   currentTemplate: Type<JsonTemplateType> | null = null;
 
   showAlert = false;
+  showLoader = false;
   validateError = '';
   beautifyJSON = '';
   validatedJSON = '';
@@ -204,9 +206,13 @@ export class HomeFeatureComponent
     });
     modal.result
       .then((resp: { url: string }) => {
+        this.showLoader = true;
         this.httpClient
           .get<object | string>(resp.url)
-          .pipe(take(1))
+          .pipe(
+            take(1),
+            finalize(() => (this.showLoader = false))
+          )
           .subscribe({
             next: (json) => {
               if (typeof json === 'string') {
