@@ -2,11 +2,16 @@
   "HomeFeature.Beautify": "Beautify",
   "HomeFeature.Tree": "Tree",
   "HomeFeature.Text": "Text",
+  "HomeFeature.EmptyText": "No JSON was inserted. Write something and try again.",
+  "HomeFeature.InvalidJSON": "The text you entered is not valid JSON. Please enter a valid JSON to print.",
+  "HomeSubFeature.Ops": "Ooops!",
+  "HomeSubFeature.Ok": "OK",
   "HomeUi.Validate": "Validate",
   "HomeUi.File": "File",
   "HomeUi.URL": "URL",
   "HomeUi.Download": "Download",
   "HomeUi.ValidJ": "Valid JSON",
   "HomeUi.Copy": "Copy",
-  "HomeUi.Copied": "Copied"
+  "HomeUi.Copied": "Copied",
+  "HomeUi.Print": "Print"
 }
