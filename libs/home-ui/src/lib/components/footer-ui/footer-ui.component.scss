@@ -3,4 +3,11 @@
   bottom: 0;
   width: 100%;
   text-align: center;
+  
+  @media (max-width: 767px) {
+    p {
+      font-size: small;
+      margin-bottom: 0;
+    }
+  }
 }
