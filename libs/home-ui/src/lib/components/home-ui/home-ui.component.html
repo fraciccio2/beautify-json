@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row m-0 w-100 pt-5 h-100">
-    <div class="col-5 text-center data-col">
+    <div class="col-md-5 col-sm-12 text-center data-col">
       <beautify-json-left-card-ui
         [formControlInputText]="formControlInputText"
         (cleanInputText)="cleanInputText.emit()"
@@ -8,7 +8,7 @@
         (expandSection)="expandSection.emit($event)"
       ></beautify-json-left-card-ui>
     </div>
-    <div class="col-2 text-center">
+    <div class="col-md-2 col-sm-12 text-center">
       <beautify-json-action-ui
         [showAlert]="showAlert"
         [validateError]="validateError"
@@ -20,7 +20,7 @@
         (readFile)="readFile.emit($event)"
       ></beautify-json-action-ui>
     </div>
-    <div class="col-5 text-center data-col">
+    <div class="col-md-5 col-sm-12 text-center data-col">
       <beautify-json-right-card-ui
         [beautifyJSON]="beautifyJSON"
         [validatedJSON]="validatedJSON"
