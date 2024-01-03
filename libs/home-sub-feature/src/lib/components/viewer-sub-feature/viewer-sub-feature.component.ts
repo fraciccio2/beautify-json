@@ -12,6 +12,7 @@ import {
   template: `<beautify-json-viewer-ui
     [expandedNodes]="expandedNodes"
     [jsonData]="jsonData"
+    (unificationExpandedNode)="unificationExpandedNode($event)"
   ></beautify-json-viewer-ui>`,
   styles: ``,
 })
@@ -59,5 +60,9 @@ export class ViewerSubFeatureComponent implements OnInit, OnChanges {
       }
     }
     return keys;
+  }
+
+  unificationExpandedNode(expandedNodes: string[]) {
+    this.expandedNodes = expandedNodes;
   }
 }

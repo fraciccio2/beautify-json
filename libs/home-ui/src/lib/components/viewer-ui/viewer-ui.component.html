@@ -10,7 +10,7 @@
             (click)="toggleNode(item); $event.stopPropagation()"
             class="bi"
             [ngClass]="
-              expandedNodes.includes(jsonData[item])
+              expandedNodes.includes(item)
                 ? 'bi-caret-down-fill'
                 : 'bi-caret-right-fill'
             "
@@ -21,6 +21,7 @@
           <beautify-json-viewer-ui
             [jsonData]="jsonData[item]"
             [expandedNodes]="expandedNodes"
+            (unificationExpandedNode)="unificationExpandedNode.emit($event)"
             *ngIf="expandedNodes?.includes(item); else object"
           ></beautify-json-viewer-ui>
           <ng-template #object>
