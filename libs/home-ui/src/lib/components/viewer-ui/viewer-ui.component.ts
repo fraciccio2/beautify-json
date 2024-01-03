@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'beautify-json-viewer-ui',
@@ -8,6 +8,7 @@ import { Component, Input } from '@angular/core';
 export class ViewerUiComponent {
   @Input() jsonData: any;
   @Input() expandedNodes: string[] = [];
+  @Output() unificationExpandedNode = new EventEmitter<string[]>();
 
   protected readonly Object = Object;
 
@@ -33,6 +34,7 @@ export class ViewerUiComponent {
       } else {
         this.expandedNodes.push(item);
       }
+      this.unificationExpandedNode.emit(this.expandedNodes);
     }
   }
 }
