@@ -8,7 +8,7 @@
       <option
         *ngFor="let option of options"
         [ngValue]="option.id"
-        [selected]="option.id === formControlTemplate?.value"
+        [selected]="option.id === formControlTemplate.value"
       >
         {{ option.label | translate }}
       </option>
