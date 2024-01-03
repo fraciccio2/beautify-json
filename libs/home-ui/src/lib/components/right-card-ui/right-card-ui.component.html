@@ -5,7 +5,11 @@
       *ngIf="formControlTemplate"
       [formControl]="formControlTemplate"
     >
-      <option *ngFor="let option of options" [ngValue]="option.id">
+      <option
+        *ngFor="let option of options"
+        [ngValue]="option.id"
+        [selected]="option.id === formControlTemplate?.value"
+      >
         {{ option.label | translate }}
       </option>
     </select>
@@ -14,7 +18,7 @@
         *ngIf="
           beautifyJSON &&
           validatedJSON &&
-          formControlTemplate?.value === JsonTemplateEnum.BEAUTY
+          formControlTemplate?.value !== JsonTemplateEnum.VIEWER
         "
         class="bi bi-copy me-2"
         [ngbTooltip]="tipContent"

@@ -1,6 +1,9 @@
 .navbar {
   height: var(--navbar-height);
   border-bottom: 1px solid var(--blue-color);
+  top: 0;
+  position: sticky;
+  z-index: 1;
 
   .navbar-brand {
     padding-top: 0 !important;
