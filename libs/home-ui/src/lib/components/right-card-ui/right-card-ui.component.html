@@ -33,6 +33,8 @@
           validatedJSON
         "
       >
+        <i class="bi bi-sort-alpha-down me-2" (click)="orderAsc.emit()"></i>
+        <i class="bi bi-sort-alpha-up-alt me-2" (click)="orderDesc.emit()"></i>
         <i class="bi bi-arrows-expand me-2" (click)="expandAll.emit()"></i>
         <i class="bi bi-arrows-collapse me-2" (click)="collapseAll.emit()"></i>
       </ng-container>

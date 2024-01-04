@@ -49,6 +49,8 @@ import { HomeFeatureService } from '../home-feature.service';
     (loadDataFromUrl)="loadDataFromUrl()"
     (downloadJsonFile)="downloadJsonFile()"
     (printJson)="printJson()"
+    (orderAsc)="orderAsc()"
+    (orderDesc)="orderDesc()"
     (expandSection)="
       $event === RightOrLeftTemplateEnum.left
         ? (showExpandedUi = true)
@@ -105,6 +107,8 @@ export class HomeFeatureComponent
   inputs: InputTemplateModel = {};
   collapseAllEmit: EventEmitter<void> = new EventEmitter<void>();
   expandAllEmit: EventEmitter<void> = new EventEmitter<void>();
+  orderAscEmit: EventEmitter<void> = new EventEmitter<void>();
+  orderDescEmit: EventEmitter<void> = new EventEmitter<void>();
 
   ngOnInit() {
     this.formControlTemplate.valueChanges.subscribe((changes) => {
@@ -133,6 +137,8 @@ export class HomeFeatureComponent
           json: this.validatedJSON,
           collapseAllEmit: this.collapseAllEmit,
           expandAllEmit: this.expandAllEmit,
+          orderAscEmit: this.orderAscEmit,
+          orderDescEmit: this.orderDescEmit,
         };
         this.currentTemplate = ViewerSubFeatureComponent;
         break;
@@ -179,6 +185,14 @@ export class HomeFeatureComponent
 
   expandAll() {
     this.expandAllEmit.emit();
+  }
+
+  orderAsc() {
+    this.orderAscEmit.emit();
+  }
+
+  orderDesc() {
+    this.orderDescEmit.emit();
   }
 
   readFile(event: Event) {

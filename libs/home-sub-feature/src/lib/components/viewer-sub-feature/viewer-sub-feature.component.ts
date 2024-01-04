@@ -12,6 +12,7 @@ import {
   template: `<beautify-json-viewer-ui
     [expandedNodes]="expandedNodes"
     [jsonData]="jsonData"
+    [order]="order"
     (unificationExpandedNode)="unificationExpandedNode($event)"
   ></beautify-json-viewer-ui>`,
   styles: ``,
@@ -20,9 +21,12 @@ export class ViewerSubFeatureComponent implements OnInit, OnChanges {
   @Input() json: string | undefined;
   @Input() collapseAllEmit: EventEmitter<void> | undefined;
   @Input() expandAllEmit: EventEmitter<void> | undefined;
+  @Input() orderAscEmit: EventEmitter<void> | undefined;
+  @Input() orderDescEmit: EventEmitter<void> | undefined;
 
   jsonData: any;
   expandedNodes: string[] = [];
+  order: 'asc' | 'desc' | '' = '';
 
   ngOnInit() {
     if (this.collapseAllEmit) {
@@ -33,6 +37,16 @@ export class ViewerSubFeatureComponent implements OnInit, OnChanges {
     if (this.expandAllEmit) {
       this.expandAllEmit.subscribe(() => {
         this.expandedNodes = this.getAllNodes(this.jsonData, '');
+      });
+    }
+    if (this.orderAscEmit) {
+      this.orderAscEmit.subscribe(() => {
+        this.order = 'asc';
+      });
+    }
+    if (this.orderDescEmit) {
+      this.orderDescEmit.subscribe(() => {
+        this.order = 'desc';
       });
     }
   }

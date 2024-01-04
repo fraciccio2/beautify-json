@@ -30,6 +30,8 @@
         [currentTemplate]="currentTemplate"
         (collapseAll)="collapseAll.emit()"
         (expandAll)="expandAll.emit()"
+        (orderAsc)="orderAsc.emit()"
+        (orderDesc)="orderDesc.emit()"
         (expandSection)="expandSection.emit($event)"
       ></beautify-json-right-card-ui>
     </div>
@@ -67,6 +69,8 @@
     [currentTemplate]="currentTemplate"
     (collapseAll)="collapseAll.emit()"
     (expandAll)="expandAll.emit()"
+    (orderAsc)="orderAsc.emit()"
+    (orderDesc)="orderDesc.emit()"
     (contractSection)="contractSection.emit($event)"
   ></beautify-json-right-card-ui>
 </div>
