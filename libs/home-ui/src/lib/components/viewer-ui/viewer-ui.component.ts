@@ -8,6 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class ViewerUiComponent {
   @Input() jsonData: any;
   @Input() expandedNodes: string[] = [];
+  @Input() parent = '';
   @Output() unificationExpandedNode = new EventEmitter<string[]>();
 
   protected readonly Object = Object;
@@ -29,10 +30,13 @@ export class ViewerUiComponent {
 
   toggleNode(item: string): void {
     if (this.isObject(this.jsonData[item]) && this.jsonData[item] !== null) {
-      if (this.expandedNodes.includes(item)) {
-        this.expandedNodes = this.expandedNodes.filter((node) => node !== item);
+      const nodeItem = item + this.parent;
+      if (this.expandedNodes.includes(nodeItem)) {
+        this.expandedNodes = this.expandedNodes.filter(
+          (node) => node !== nodeItem
+        );
       } else {
-        this.expandedNodes.push(item);
+        this.expandedNodes.push(nodeItem);
       }
       this.unificationExpandedNode.emit(this.expandedNodes);
     }

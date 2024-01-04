@@ -32,7 +32,7 @@ export class ViewerSubFeatureComponent implements OnInit, OnChanges {
     }
     if (this.expandAllEmit) {
       this.expandAllEmit.subscribe(() => {
-        this.expandedNodes = this.getAllNodes(this.jsonData);
+        this.expandedNodes = this.getAllNodes(this.jsonData, '');
       });
     }
   }
@@ -51,12 +51,13 @@ export class ViewerSubFeatureComponent implements OnInit, OnChanges {
     return typeof obj === 'object' && obj !== null;
   }
 
-  getAllNodes(obj: any): string[] {
+  getAllNodes(obj: any, parent: string): string[] {
     let keys: string[] = [];
     for (const key of Object.keys(obj)) {
-      keys.push(key);
       if (this.isObject(obj[key]) && obj[key] !== null) {
-        keys = keys.concat(this.getAllNodes(obj[key]));
+        const nodeItem = key + parent;
+        keys.push(nodeItem);
+        keys = keys.concat(this.getAllNodes(obj[key], nodeItem));
       }
     }
     return keys;
