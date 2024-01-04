@@ -1,5 +1,5 @@
 <ul class="list-node" *ngIf="jsonData">
-  <li *ngFor="let item of getObjectKeys(jsonData)" class="text-start">
+  <li *ngFor="let item of getObjectKeys(jsonData, order)" class="text-start">
     <span class="toggle-icon">
       <span
         *ngIf="isObject(jsonData[item]) && jsonData[item] !== null"
@@ -22,6 +22,7 @@
             [jsonData]="jsonData[item]"
             [expandedNodes]="expandedNodes"
             [parent]="item + parent"
+            [order]="order"
             (unificationExpandedNode)="unificationExpandedNode.emit($event)"
             *ngIf="expandedNodes?.includes(item + parent); else object"
           ></beautify-json-viewer-ui>

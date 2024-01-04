@@ -7,4 +7,6 @@ export interface InputTemplateModel {
   formControlInputTextSub?: FormControl;
   collapseAllEmit?: EventEmitter<void>;
   expandAllEmit?: EventEmitter<void>;
+  orderAscEmit?: EventEmitter<void>;
+  orderDescEmit?: EventEmitter<void>;
 }

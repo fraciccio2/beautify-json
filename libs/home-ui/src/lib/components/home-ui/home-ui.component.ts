@@ -31,6 +31,8 @@ export class HomeUiComponent {
   @Output() loadDataFromUrl = new EventEmitter<void>();
   @Output() downloadJsonFile = new EventEmitter<void>();
   @Output() printJson = new EventEmitter<void>();
+  @Output() orderAsc = new EventEmitter<void>();
+  @Output() orderDesc = new EventEmitter<void>();
   @Output() expandSection = new EventEmitter<RightOrLeftTemplateEnum>();
   @Output() contractSection = new EventEmitter<RightOrLeftTemplateEnum>();
   @Output() readFile = new EventEmitter<Event>();

@@ -9,13 +9,21 @@ export class ViewerUiComponent {
   @Input() jsonData: any;
   @Input() expandedNodes: string[] = [];
   @Input() parent = '';
+  @Input() order: 'asc' | 'desc' | '' = '';
   @Output() unificationExpandedNode = new EventEmitter<string[]>();
 
   protected readonly Object = Object;
 
-  getObjectKeys(obj: unknown): string[] {
+  getObjectKeys(obj: unknown, order: 'asc' | 'desc' | ''): string[] {
     if (typeof obj === 'object' && obj !== null) {
-      return Object.keys(obj);
+      const arr = Object.keys(obj);
+      if (!arr || arr.length <= 1 || !order) {
+        return arr;
+      }
+
+      return arr.sort((a, b) =>
+        order === 'asc' ? a.localeCompare(b) : b.localeCompare(a)
+      );
     }
     return [];
   }
