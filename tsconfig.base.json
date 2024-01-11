@@ -16,6 +16,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@beautify-json/footer-ui": ["libs/footer-ui/src/index.ts"],
       "@beautify-json/home-feature": ["libs/home-feature/src/index.ts"],
       "@beautify-json/home-sub-feature": ["libs/home-sub-feature/src/index.ts"],
       "@beautify-json/home-ui": ["libs/home-ui/src/index.ts"],

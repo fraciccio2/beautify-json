@@ -7,6 +7,7 @@ import { HomeFeatureModule } from '@beautify-json/home-feature';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import * as it from '../assets/translations/it.json';
 import * as en from '../assets/translations/en.json';
+import { FooterUiModule } from '@beautify-json/footer-ui';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +24,7 @@ import * as en from '../assets/translations/en.json';
     }),
     NavbarFeatureModule,
     HomeFeatureModule,
+    FooterUiModule,
   ],
   bootstrap: [AppComponent],
 })

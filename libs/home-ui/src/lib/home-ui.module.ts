@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import {
   ActionUiComponent,
   BeautyUiComponent,
-  FooterUiComponent,
   HomeUiComponent,
   LeftCardUiComponent,
   RightCardUiComponent,
@@ -31,7 +30,6 @@ import { TranslateModule } from '@ngx-translate/core';
     RightCardUiComponent,
     LeftCardUiComponent,
     TextUiComponent,
-    FooterUiComponent,
   ],
   exports: [
     HomeUiComponent,
@@ -41,7 +39,6 @@ import { TranslateModule } from '@ngx-translate/core';
     RightCardUiComponent,
     LeftCardUiComponent,
     TextUiComponent,
-    FooterUiComponent,
   ],
 })
 export class HomeUiModule {}

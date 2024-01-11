@@ -1,0 +1,21 @@
+.my-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .icon {
+    padding-bottom: 1rem;
+    margin-left: 0.5rem;
+    color: var(--bs-secondary-color);
+  }
+
+  @media (max-width: 767px) {
+    p {
+      font-size: small;
+      margin-bottom: 0;
+    }
+  }
+}
