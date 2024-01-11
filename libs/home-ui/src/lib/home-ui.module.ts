@@ -4,12 +4,13 @@ import {
   ActionUiComponent,
   BeautyUiComponent,
   HomeUiComponent,
+  InfoUiComponent,
   LeftCardUiComponent,
   RightCardUiComponent,
   TextUiComponent,
   ViewerUiComponent,
 } from './components';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
@@ -21,6 +22,7 @@ import { TranslateModule } from '@ngx-translate/core';
     ClipboardModule,
     NgbTooltip,
     TranslateModule,
+    FormsModule,
   ],
   declarations: [
     HomeUiComponent,
@@ -30,6 +32,7 @@ import { TranslateModule } from '@ngx-translate/core';
     RightCardUiComponent,
     LeftCardUiComponent,
     TextUiComponent,
+    InfoUiComponent,
   ],
   exports: [
     HomeUiComponent,
@@ -39,6 +42,7 @@ import { TranslateModule } from '@ngx-translate/core';
     RightCardUiComponent,
     LeftCardUiComponent,
     TextUiComponent,
+    InfoUiComponent,
   ],
 })
 export class HomeUiModule {}

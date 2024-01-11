@@ -5,3 +5,4 @@ export * from './action-ui/action-ui.component';
 export * from './right-card-ui/right-card-ui.component';
 export * from './left-card-ui/left-card-ui.component';
 export * from './text-ui/text-ui.component';
+export * from './info-ui/info-ui.component';
