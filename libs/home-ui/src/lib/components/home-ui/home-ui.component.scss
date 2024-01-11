@@ -1,6 +1,7 @@
 .container-fluid {
   background-color: var(--blue-color);
   height: calc(100vh - var(--navbar-height));
+  overflow-y: auto;
 
   .data-col {
     max-height: 100%;

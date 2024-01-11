@@ -3,14 +3,14 @@ import { CommonModule } from '@angular/common';
 import {
   ActionUiComponent,
   BeautyUiComponent,
-  FooterUiComponent,
   HomeUiComponent,
+  InfoUiComponent,
   LeftCardUiComponent,
   RightCardUiComponent,
   TextUiComponent,
   ViewerUiComponent,
 } from './components';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
@@ -22,6 +22,7 @@ import { TranslateModule } from '@ngx-translate/core';
     ClipboardModule,
     NgbTooltip,
     TranslateModule,
+    FormsModule,
   ],
   declarations: [
     HomeUiComponent,
@@ -31,7 +32,7 @@ import { TranslateModule } from '@ngx-translate/core';
     RightCardUiComponent,
     LeftCardUiComponent,
     TextUiComponent,
-    FooterUiComponent,
+    InfoUiComponent,
   ],
   exports: [
     HomeUiComponent,
@@ -41,7 +42,7 @@ import { TranslateModule } from '@ngx-translate/core';
     RightCardUiComponent,
     LeftCardUiComponent,
     TextUiComponent,
-    FooterUiComponent,
+    InfoUiComponent,
   ],
 })
 export class HomeUiModule {}

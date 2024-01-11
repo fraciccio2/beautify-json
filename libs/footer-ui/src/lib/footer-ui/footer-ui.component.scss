@@ -1,0 +1,31 @@
+.my-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--blue-color);
+
+  .icon {
+    padding-bottom: 1rem;
+    margin-left: 0.5rem;
+    color: var(--bs-secondary-color);
+  }
+
+  .privacy {
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity)) !important;
+    margin-left: 0.5rem;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: underline !important;
+  }
+
+  @media (max-width: 767px) {
+    p {
+      font-size: small;
+      margin-bottom: 0;
+    }
+  }
+}
