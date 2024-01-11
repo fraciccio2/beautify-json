@@ -19,6 +19,7 @@ export class RightCardUiComponent {
   @Input() inputs: InputTemplateModel | undefined;
   @Input() options: { label: string; id: number }[] | undefined;
   @Input() formControlTemplate: FormControl | undefined;
+  @Input() formControlText: FormControl | undefined;
   @Input() currentTemplate: Type<JsonTemplateType> | null = null;
   @Output() collapseAll = new EventEmitter<void>();
   @Output() expandAll = new EventEmitter<void>();

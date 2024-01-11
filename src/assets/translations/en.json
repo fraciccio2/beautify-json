@@ -28,6 +28,7 @@
   "HomeUi.Common": "JSON example",
   "HomeUi.ErrorTitle": "Common Errors",
   "HomeUi.Error": "<ul><li>Strings must be enclosed in double quotes. Without them, a syntax error occurs.</li><li>Object keys must be strings and enclosed in double quotes.</li><li>Only double quotes are valid for JSON strings, not single quotes.</li><li>Adding an extra comma to the last element of an object or array results in a syntax error.</li><li>Null, true, and false are special values and must be written in lowercase.</li><li>JSON does not support comments. Adding comments results in a syntax error.</li></ul>",
+  "HomeUi.Search": "Search",
   "FooterUi.Created": "Copyright © Francesco Nicolò Giacomazzo. All rights reserved.",
   "PrivacyUi.SiteName": "Privacy Policy for Beautify JSON",
   "PrivacyUi.GeneralPrivacy": "Welcome to Beautify JSON. This page outlines our policy on the collection, use, and disclosure of personal information in connection with the use of Google AdSense on our site.",

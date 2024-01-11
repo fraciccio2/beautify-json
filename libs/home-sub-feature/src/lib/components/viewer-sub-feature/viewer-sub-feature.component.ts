@@ -10,6 +10,7 @@ import {
 @Component({
   selector: 'beautify-json-viewer-sub-feature',
   template: `<beautify-json-viewer-ui
+    [inputText]="inputText"
     [expandedNodes]="expandedNodes"
     [jsonData]="jsonData"
     [order]="order"
@@ -19,6 +20,7 @@ import {
 })
 export class ViewerSubFeatureComponent implements OnInit, OnChanges {
   @Input() json: string | undefined;
+  @Input() inputText: string | undefined;
   @Input() collapseAllEmit: EventEmitter<void> | undefined;
   @Input() expandAllEmit: EventEmitter<void> | undefined;
   @Input() orderAscEmit: EventEmitter<void> | undefined;
@@ -58,6 +60,11 @@ export class ViewerSubFeatureComponent implements OnInit, OnChanges {
       } catch (e) {
         console.error(e);
       }
+    }
+    if (changes && changes['inputText'] && this.inputText) {
+      this.expandedNodes = this.getAllNodes(this.jsonData, '');
+    } else if (changes && changes['inputText'] && !this.inputText) {
+      this.expandedNodes = [];
     }
   }
 

@@ -28,6 +28,7 @@
   "HomeUi.Common": "Esempio JSON",
   "HomeUi.ErrorTitle": "Errori Comuni",
   "HomeUi.Error": "<ul><li>Le stringhe devono essere racchiuse tra virgolette doppie. Senza di esse, si verifica un errore di sintassi.</li><li>Le chiavi di un oggetto devono essere stringhe e racchiuse tra virgolette doppie.</li><li>Solo le virgolette doppie sono valide per le stringhe JSON, non le virgolette singole.</li><li>L'aggiunta di una virgola aggiuntiva all'ultimo elemento di un oggetto o di un array genera un errore di sintassi.</li></li>Null, true e false sono valori speciali e devono essere scritti in minuscolo.</li><li> JSON non supporta commenti. L'aggiunta di commenti genera un errore di sintassi.</li></ul>",
+  "HomeUi.Search": "Cerca",
   "FooterUi.Created": "Copyright © Francesco Nicolò Giacomazzo. Tutti i diritti riservati.",
   "PrivacyUi.SiteName": "Privacy Policy per Beautify JSON",
   "PrivacyUi.GeneralPrivacy": "Benvenuto su Beautify JSON. Questa pagina illustra la nostra politica sulla raccolta, l'uso e la divulgazione delle informazioni personali in relazione all'utilizzo di Google AdSense sul nostro sito.",

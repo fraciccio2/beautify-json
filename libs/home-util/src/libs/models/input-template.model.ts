@@ -4,6 +4,7 @@ import { FormControl } from '@angular/forms';
 export interface InputTemplateModel {
   json?: string;
   beautifyJSON?: string;
+  inputText?: string;
   formControlInputTextSub?: FormControl;
   collapseAllEmit?: EventEmitter<void>;
   expandAllEmit?: EventEmitter<void>;

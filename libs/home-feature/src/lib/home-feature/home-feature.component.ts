@@ -41,6 +41,7 @@ import { HomeFeatureService } from '../home-feature.service';
     [options]="homeFeatureService.options"
     [formControlInputText]="formControlInputText"
     [formControlTemplate]="formControlTemplate"
+    [formControlText]="formControlText"
     [currentTemplate]="currentTemplate"
     (validateJSON)="validateJSON()"
     (cleanInputText)="cleanInputText()"
@@ -77,6 +78,7 @@ export class HomeFeatureComponent
   formControlInputText = new FormControl('', Validators.required);
   formControlInputTextSub = new FormControl('');
   formControlTemplate = new FormControl(1, Validators.required);
+  formControlText = new FormControl('');
 
   currentTemplate: Type<JsonTemplateType> | null = null;
 
@@ -113,6 +115,12 @@ export class HomeFeatureComponent
   ngOnInit() {
     this.formControlTemplate.valueChanges.subscribe((changes) => {
       this.changeTemplate(changes ?? JsonTemplateEnum.BEAUTY);
+    });
+    this.formControlText.valueChanges.subscribe((changes) => {
+      this.inputs = {
+        ...this.inputs,
+        inputText: changes ?? '',
+      };
     });
   }
 
