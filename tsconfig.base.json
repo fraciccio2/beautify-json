@@ -22,7 +22,9 @@
       "@beautify-json/home-ui": ["libs/home-ui/src/index.ts"],
       "@beautify-json/home-util": ["libs/home-util/src/index.ts"],
       "@beautify-json/navbar-feature": ["libs/navbar-feature/src/index.ts"],
-      "@beautify-json/navbar-ui": ["libs/navbar-ui/src/index.ts"]
+      "@beautify-json/navbar-ui": ["libs/navbar-ui/src/index.ts"],
+      "@beautify-json/privacy-feature": ["libs/privacy-feature/src/index.ts"],
+      "@beautify-json/privacy-ui": ["libs/privacy-ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

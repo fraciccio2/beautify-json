@@ -8,6 +8,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import * as it from '../assets/translations/it.json';
 import * as en from '../assets/translations/en.json';
 import { FooterUiModule } from '@beautify-json/footer-ui';
+import { PrivacyFeatureModule } from '@beautify-json/privacy-feature';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,6 +25,7 @@ import { FooterUiModule } from '@beautify-json/footer-ui';
     }),
     NavbarFeatureModule,
     HomeFeatureModule,
+    PrivacyFeatureModule,
     FooterUiModule,
   ],
   bootstrap: [AppComponent],
