@@ -34,6 +34,7 @@ export class HomeUiComponent {
   @Output() printJson = new EventEmitter<void>();
   @Output() orderAsc = new EventEmitter<void>();
   @Output() orderDesc = new EventEmitter<void>();
+  @Output() focusOnInput = new EventEmitter<void>();
   @Output() expandSection = new EventEmitter<RightOrLeftTemplateEnum>();
   @Output() contractSection = new EventEmitter<RightOrLeftTemplateEnum>();
   @Output() readFile = new EventEmitter<Event>();

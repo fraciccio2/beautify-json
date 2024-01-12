@@ -52,6 +52,7 @@ import { HomeFeatureService } from '../home-feature.service';
     (printJson)="printJson()"
     (orderAsc)="orderAsc()"
     (orderDesc)="orderDesc()"
+    (focusOnInput)="focusOnInput()"
     (expandSection)="
       $event === RightOrLeftTemplateEnum.left
         ? (showExpandedUi = true)
@@ -284,6 +285,13 @@ export class HomeFeatureComponent
         centered: true,
       });
       modal.componentInstance.message = 'HomeFeature.EmptyText';
+    }
+  }
+
+  focusOnInput() {
+    const input = document.getElementById('input-popup');
+    if (input) {
+      input.focus();
     }
   }
 }

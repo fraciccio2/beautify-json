@@ -7,6 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class ViewerUiComponent {
   @Input() jsonData: any;
+  @Input() filterObj: boolean = true;
   @Input() inputText: string | undefined;
   @Input() expandedNodes: string[] = [];
   @Input() parent = '';
@@ -18,7 +19,9 @@ export class ViewerUiComponent {
   getObjectKeys(obj: unknown, order: 'asc' | 'desc' | ''): string[] {
     if (typeof obj === 'object' && obj !== null) {
       const arr = Object.keys(
-        this.filterObjectForKeys(obj, this.inputText ?? '')
+        this.filterObj
+          ? this.filterObjectForKeys(obj, this.inputText ?? '')
+          : obj
       );
       if (!arr || arr.length <= 1 || !order) {
         return arr;
@@ -53,34 +56,25 @@ export class ViewerUiComponent {
     }
   }
 
-  filterObjectForKeys(obj: any, filterString: string): any {
+  filterObjectForKeys(obj: any, filterString: string, parentKey?: string): any {
     const filterStringL = filterString.toLowerCase();
     const result: Record<string, any> = {};
     for (const key in obj) {
-      if (Object.getOwnPropertyDescriptor(obj, key)) {
+      if (Object.prototype.hasOwnProperty.call(obj, key)) {
         const value = obj[key];
-        if (typeof value === 'object' && value !== null) {
-          if (Array.isArray(value)) {
-            const filteredArray = value.filter(
-              (item) =>
-                typeof item === 'string' &&
-                item.toLowerCase().includes(filterStringL)
-            );
-            if (filteredArray.length > 0) {
-              result[key] = filteredArray;
-            }
-          } else {
-            const filteredNestedObject = this.filterObjectForKeys(
-              value,
-              filterStringL
-            );
-            if (Object.keys(filteredNestedObject).length > 0) {
-              result[key] = filteredNestedObject;
-            }
-          }
-        } else {
-          if (key.toLowerCase().includes(filterStringL)) {
-            result[key] = value;
+        if (
+          key.toLowerCase().includes(filterStringL) ||
+          (parentKey && parentKey.toLowerCase().includes(filterStringL))
+        ) {
+          result[key] = value;
+        } else if (typeof value === 'object' && value !== null) {
+          const filteredNestedObject = this.filterObjectForKeys(
+            value,
+            filterStringL,
+            key
+          );
+          if (Object.keys(filteredNestedObject).length > 0) {
+            result[key] = filteredNestedObject;
           }
         }
       }

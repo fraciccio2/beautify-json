@@ -25,6 +25,7 @@ export class RightCardUiComponent {
   @Output() expandAll = new EventEmitter<void>();
   @Output() orderAsc = new EventEmitter<void>();
   @Output() orderDesc = new EventEmitter<void>();
+  @Output() focusOnInput = new EventEmitter<void>();
   @Output() expandSection = new EventEmitter<RightOrLeftTemplateEnum>();
   @Output() contractSection = new EventEmitter<RightOrLeftTemplateEnum>();
 

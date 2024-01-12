@@ -40,6 +40,7 @@
               class="form-control me-2"
               placeholder="{{ 'HomeUi.Search' | translate }}"
               [formControl]="formControlText"
+              id="input-popup"
             />
             <i class="bi bi-x-lg cursor-pointer" (click)="p.toggle()"></i>
           </div>
@@ -49,6 +50,7 @@
           [ngbPopover]="popContent"
           container="body"
           [autoClose]="false"
+          (shown)="focusOnInput.emit()"
           #p="ngbPopover"
         ></i>
         <i class="bi bi-sort-alpha-down me-2" (click)="orderAsc.emit()"></i>

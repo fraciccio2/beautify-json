@@ -21,6 +21,10 @@
           :
           <beautify-json-viewer-ui
             [jsonData]="jsonData[item]"
+            [filterObj]="
+              !!inputText &&
+              !item.toLowerCase().includes(inputText.toLowerCase())
+            "
             [inputText]="inputText"
             [expandedNodes]="expandedNodes"
             [parent]="item + parent"
