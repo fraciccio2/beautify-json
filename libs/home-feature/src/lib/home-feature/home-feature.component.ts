@@ -41,6 +41,7 @@ import { HomeFeatureService } from '../home-feature.service';
     [options]="homeFeatureService.options"
     [formControlInputText]="formControlInputText"
     [formControlTemplate]="formControlTemplate"
+    [formControlText]="formControlText"
     [currentTemplate]="currentTemplate"
     (validateJSON)="validateJSON()"
     (cleanInputText)="cleanInputText()"
@@ -51,6 +52,7 @@ import { HomeFeatureService } from '../home-feature.service';
     (printJson)="printJson()"
     (orderAsc)="orderAsc()"
     (orderDesc)="orderDesc()"
+    (focusOnInput)="focusOnInput()"
     (expandSection)="
       $event === RightOrLeftTemplateEnum.left
         ? (showExpandedUi = true)
@@ -77,6 +79,7 @@ export class HomeFeatureComponent
   formControlInputText = new FormControl('', Validators.required);
   formControlInputTextSub = new FormControl('');
   formControlTemplate = new FormControl(1, Validators.required);
+  formControlText = new FormControl('');
 
   currentTemplate: Type<JsonTemplateType> | null = null;
 
@@ -113,6 +116,12 @@ export class HomeFeatureComponent
   ngOnInit() {
     this.formControlTemplate.valueChanges.subscribe((changes) => {
       this.changeTemplate(changes ?? JsonTemplateEnum.BEAUTY);
+    });
+    this.formControlText.valueChanges.subscribe((changes) => {
+      this.inputs = {
+        ...this.inputs,
+        inputText: changes ?? '',
+      };
     });
   }
 
@@ -276,6 +285,13 @@ export class HomeFeatureComponent
         centered: true,
       });
       modal.componentInstance.message = 'HomeFeature.EmptyText';
+    }
+  }
+
+  focusOnInput() {
+    const input = document.getElementById('input-popup');
+    if (input) {
+      input.focus();
     }
   }
 }

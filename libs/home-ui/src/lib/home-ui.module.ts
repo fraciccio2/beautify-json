@@ -12,8 +12,9 @@ import {
 } from './components';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClipboardModule } from '@angular/cdk/clipboard';
-import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
+import { NgbPopover, NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
+import { HomeUtilModule } from '@beautify-json/home-util';
 
 @NgModule({
   imports: [
@@ -23,6 +24,8 @@ import { TranslateModule } from '@ngx-translate/core';
     NgbTooltip,
     TranslateModule,
     FormsModule,
+    NgbPopover,
+    HomeUtilModule,
   ],
   declarations: [
     HomeUiComponent,

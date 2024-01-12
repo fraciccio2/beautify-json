@@ -7,6 +7,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class ViewerUiComponent {
   @Input() jsonData: any;
+  @Input() filterObj: boolean = true;
+  @Input() inputText: string | undefined;
   @Input() expandedNodes: string[] = [];
   @Input() parent = '';
   @Input() order: 'asc' | 'desc' | '' = '';
@@ -16,7 +18,11 @@ export class ViewerUiComponent {
 
   getObjectKeys(obj: unknown, order: 'asc' | 'desc' | ''): string[] {
     if (typeof obj === 'object' && obj !== null) {
-      const arr = Object.keys(obj);
+      const arr = Object.keys(
+        this.filterObj
+          ? this.filterObjectForKeys(obj, this.inputText ?? '')
+          : obj
+      );
       if (!arr || arr.length <= 1 || !order) {
         return arr;
       }
@@ -48,5 +54,31 @@ export class ViewerUiComponent {
       }
       this.unificationExpandedNode.emit(this.expandedNodes);
     }
+  }
+
+  filterObjectForKeys(obj: any, filterString: string, parentKey?: string): any {
+    const filterStringL = filterString.toLowerCase();
+    const result: Record<string, any> = {};
+    for (const key in obj) {
+      if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        const value = obj[key];
+        if (
+          key.toLowerCase().includes(filterStringL) ||
+          (parentKey && parentKey.toLowerCase().includes(filterStringL))
+        ) {
+          result[key] = value;
+        } else if (typeof value === 'object' && value !== null) {
+          const filteredNestedObject = this.filterObjectForKeys(
+            value,
+            filterStringL,
+            key
+          );
+          if (Object.keys(filteredNestedObject).length > 0) {
+            result[key] = filteredNestedObject;
+          }
+        }
+      }
+    }
+    return result;
   }
 }

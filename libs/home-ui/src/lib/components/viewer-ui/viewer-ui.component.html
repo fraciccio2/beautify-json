@@ -17,9 +17,15 @@
           ></i>
         </div>
         <div class="col-11 ps-0">
-          {{ item }}:
+          <span [innerHTML]="item | highlight : inputText ?? ''"></span>
+          :
           <beautify-json-viewer-ui
             [jsonData]="jsonData[item]"
+            [filterObj]="
+              !!inputText &&
+              !item.toLowerCase().includes(inputText.toLowerCase())
+            "
+            [inputText]="inputText"
             [expandedNodes]="expandedNodes"
             [parent]="item + parent"
             [order]="order"
@@ -37,7 +43,8 @@
         </div>
       </span>
       <span *ngIf="!isObject(jsonData[item])" class="offset-1"
-        >{{ item }} : {{ jsonData[item] }}</span
+        ><span [innerHTML]="item | highlight : inputText ?? ''"></span> :
+        {{ jsonData[item] }}</span
       >
     </span>
   </li>

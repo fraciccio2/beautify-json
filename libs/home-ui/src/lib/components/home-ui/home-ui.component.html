@@ -27,11 +27,13 @@
         [inputs]="inputs"
         [options]="options"
         [formControlTemplate]="formControlTemplate"
+        [formControlText]="formControlText"
         [currentTemplate]="currentTemplate"
         (collapseAll)="collapseAll.emit()"
         (expandAll)="expandAll.emit()"
         (orderAsc)="orderAsc.emit()"
         (orderDesc)="orderDesc.emit()"
+        (focusOnInput)="focusOnInput.emit()"
         (expandSection)="expandSection.emit($event)"
       ></beautify-json-right-card-ui>
     </div>
@@ -71,6 +73,7 @@
     (expandAll)="expandAll.emit()"
     (orderAsc)="orderAsc.emit()"
     (orderDesc)="orderDesc.emit()"
+    (focusOnInput)="focusOnInput.emit()"
     (contractSection)="contractSection.emit($event)"
   ></beautify-json-right-card-ui>
 </div>

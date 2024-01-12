@@ -23,6 +23,7 @@ export class HomeUiComponent {
   @Input() options: { label: string; id: number }[] | undefined;
   @Input() formControlInputText: FormControl | undefined;
   @Input() formControlTemplate: FormControl | undefined;
+  @Input() formControlText: FormControl | undefined;
   @Input() currentTemplate: Type<JsonTemplateType> | null = null;
   @Output() validateJSON = new EventEmitter<void>();
   @Output() cleanInputText = new EventEmitter<void>();
@@ -33,6 +34,7 @@ export class HomeUiComponent {
   @Output() printJson = new EventEmitter<void>();
   @Output() orderAsc = new EventEmitter<void>();
   @Output() orderDesc = new EventEmitter<void>();
+  @Output() focusOnInput = new EventEmitter<void>();
   @Output() expandSection = new EventEmitter<RightOrLeftTemplateEnum>();
   @Output() contractSection = new EventEmitter<RightOrLeftTemplateEnum>();
   @Output() readFile = new EventEmitter<Event>();

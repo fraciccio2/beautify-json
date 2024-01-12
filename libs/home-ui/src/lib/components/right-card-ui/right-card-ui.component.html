@@ -33,6 +33,26 @@
           validatedJSON
         "
       >
+        <ng-template #popContent>
+          <div class="d-flex align-items-center justify-content-center">
+            <input
+              *ngIf="formControlText"
+              class="form-control me-2"
+              placeholder="{{ 'HomeUi.Search' | translate }}"
+              [formControl]="formControlText"
+              id="input-popup"
+            />
+            <i class="bi bi-x-lg cursor-pointer" (click)="p.toggle()"></i>
+          </div>
+        </ng-template>
+        <i
+          class="bi bi-search me-2"
+          [ngbPopover]="popContent"
+          container="body"
+          [autoClose]="false"
+          (shown)="focusOnInput.emit()"
+          #p="ngbPopover"
+        ></i>
         <i class="bi bi-sort-alpha-down me-2" (click)="orderAsc.emit()"></i>
         <i class="bi bi-sort-alpha-up-alt me-2" (click)="orderDesc.emit()"></i>
         <i class="bi bi-arrows-expand me-2" (click)="expandAll.emit()"></i>
