@@ -23,7 +23,7 @@
             [jsonData]="jsonData[item]"
             [filterObj]="
               !!inputText &&
-              !item.toLowerCase().includes(inputText.toLowerCase())
+              !(item + parent).toLowerCase().includes(inputText.toLowerCase())
             "
             [inputText]="inputText"
             [expandedNodes]="expandedNodes"
