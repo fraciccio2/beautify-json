@@ -15,6 +15,7 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
 import { NgbPopover, NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
 import { HomeUtilModule } from '@beautify-json/home-util';
+import { CodemirrorModule } from '@ctrl/ngx-codemirror';
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import { HomeUtilModule } from '@beautify-json/home-util';
     FormsModule,
     NgbPopover,
     HomeUtilModule,
+    CodemirrorModule,
   ],
   declarations: [
     HomeUiComponent,

@@ -34,27 +34,12 @@
       {{ (!isCopy ? 'HomeUi.Copy' : 'HomeUi.Copied') | translate }}
     </ng-template>
   </div>
-  <div class="card-body" *ngIf="formControlInputText">
-    <div class="row m-0 w-100 h-100">
-      <div class="col-auto line-container">
-        <div class="line-number-left">
-          <div
-            *ngFor="
-              let _ of formControlInputText?.value?.split('\n');
-              index as i
-            "
-          >
-            {{ i + 1 }}
-          </div>
-        </div>
-      </div>
-      <div class="col textarea-container">
-        <textarea
-          spellcheck="false"
-          class="form-control custom-textarea"
-          [formControl]="formControlInputText"
-        ></textarea>
-      </div>
-    </div>
+  <div class="card-body" *ngIf="formControlInputText && codeMirrorOptions">
+    <ngx-codemirror
+      class="d-block h-100 text-start"
+      [options]="codeMirrorOptions"
+      [formControl]="formControlInputText"
+      (codeMirrorLoaded)="passCodeMirrorComponent.emit($event)"
+    ></ngx-codemirror>
   </div>
 </div>
