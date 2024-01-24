@@ -5,6 +5,7 @@ import {
   JsonTemplateType,
   RightOrLeftTemplateEnum,
 } from '@beautify-json/home-util';
+import { CodemirrorComponent } from '@ctrl/ngx-codemirror';
 
 @Component({
   selector: 'beautify-json-home-ui',
@@ -25,6 +26,9 @@ export class HomeUiComponent {
   @Input() formControlTemplate: FormControl | undefined;
   @Input() formControlText: FormControl | undefined;
   @Input() currentTemplate: Type<JsonTemplateType> | null = null;
+  @Input() codeMirrorOptions:
+    | { [key: string]: boolean | string | string[] }
+    | undefined;
   @Output() validateJSON = new EventEmitter<void>();
   @Output() cleanInputText = new EventEmitter<void>();
   @Output() collapseAll = new EventEmitter<void>();
@@ -35,7 +39,9 @@ export class HomeUiComponent {
   @Output() orderAsc = new EventEmitter<void>();
   @Output() orderDesc = new EventEmitter<void>();
   @Output() focusOnInput = new EventEmitter<void>();
+  @Output() formatCodeOnLeft = new EventEmitter<void>();
   @Output() expandSection = new EventEmitter<RightOrLeftTemplateEnum>();
   @Output() contractSection = new EventEmitter<RightOrLeftTemplateEnum>();
   @Output() readFile = new EventEmitter<Event>();
+  @Output() passCodeMirrorComponent = new EventEmitter<CodemirrorComponent>();
 }

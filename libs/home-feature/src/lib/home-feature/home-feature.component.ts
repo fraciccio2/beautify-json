@@ -17,6 +17,7 @@ import {
 } from '@beautify-json/home-util';
 import {
   BeautySubFeatureComponent,
+  CodeSubFeatureComponent,
   ErrorModalComponent,
   LoadDataUrlModalComponent,
   TextSubFeatureComponent,
@@ -26,6 +27,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient } from '@angular/common/http';
 import { finalize, take } from 'rxjs';
 import { HomeFeatureService } from '../home-feature.service';
+import { CodemirrorComponent } from '@ctrl/ngx-codemirror';
+import * as CodeMirror from 'codemirror';
 
 @Component({
   selector: 'beautify-json-home-feature',
@@ -43,6 +46,7 @@ import { HomeFeatureService } from '../home-feature.service';
     [formControlTemplate]="formControlTemplate"
     [formControlText]="formControlText"
     [currentTemplate]="currentTemplate"
+    [codeMirrorOptions]="codeMirrorOptions"
     (validateJSON)="validateJSON()"
     (cleanInputText)="cleanInputText()"
     (collapseAll)="collapseAll()"
@@ -53,6 +57,7 @@ import { HomeFeatureService } from '../home-feature.service';
     (orderAsc)="orderAsc()"
     (orderDesc)="orderDesc()"
     (focusOnInput)="focusOnInput()"
+    (formatCodeOnLeft)="formatCodeOnLeft()"
     (expandSection)="
       $event === RightOrLeftTemplateEnum.left
         ? (showExpandedUi = true)
@@ -64,6 +69,7 @@ import { HomeFeatureService } from '../home-feature.service';
         : (showExpandedSub = false)
     "
     (readFile)="readFile($event)"
+    (passCodeMirrorComponent)="passCodeMirrorComponent($event)"
   ></beautify-json-home-ui>`,
   styles: ``,
 })
@@ -107,7 +113,19 @@ export class HomeFeatureComponent
       color: #7babf6;
     }
   `;
+  errorLine: CodeMirror.LineHandle | null = null;
+  codeMirrorOptions: { [key: string]: boolean | string | string[] } = {
+    lineNumbers: true,
+    styleActiveLine: true,
+    matchBrackets: true,
+    indentWithTabs: true,
+    autofocus: true,
+    mode: 'javascript',
+    foldGutter: true,
+    gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
+  };
   inputs: InputTemplateModel = {};
+  codemirrorInstance: CodeMirror.EditorFromTextArea | undefined;
   collapseAllEmit: EventEmitter<void> = new EventEmitter<void>();
   expandAllEmit: EventEmitter<void> = new EventEmitter<void>();
   orderAscEmit: EventEmitter<void> = new EventEmitter<void>();
@@ -141,6 +159,13 @@ export class HomeFeatureComponent
         };
         this.currentTemplate = BeautySubFeatureComponent;
         break;
+      case JsonTemplateEnum.CODE:
+        this.inputs = {
+          codeMirrorOptions: { ...this.codeMirrorOptions, readOnly: true },
+          validatedJSON: this.validatedJSON,
+        };
+        this.currentTemplate = CodeSubFeatureComponent;
+        break;
       case JsonTemplateEnum.VIEWER:
         this.inputs = {
           json: this.validatedJSON,
@@ -164,6 +189,7 @@ export class HomeFeatureComponent
   validateJSON() {
     if (this.formControlInputText?.value) {
       this.showAlert = true;
+      this.highlightErrorLine();
       try {
         const parse = JSON.parse(this.formControlInputText?.value);
         this.validatedJSON = JSON.stringify(parse, null, '\t');
@@ -176,14 +202,38 @@ export class HomeFeatureComponent
         );
       } catch (e) {
         if (e instanceof Error) {
+          const lineMatches = e.message.match(/line ([0-9]*)/);
+          if (lineMatches && lineMatches.length > 1) {
+            this.highlightErrorLine(+lineMatches[1] - 1);
+          }
           this.validateError = e.message;
         }
       }
     }
   }
 
+  highlightErrorLine(line?: number) {
+    if (this.codemirrorInstance) {
+      if (typeof line === 'number') {
+        this.errorLine = this.codemirrorInstance.addLineClass(
+          line,
+          'background',
+          'line-error'
+        );
+        this.codemirrorInstance.setCursor(line);
+      } else if (this.errorLine) {
+        this.codemirrorInstance.removeLineClass(
+          this.errorLine,
+          'background',
+          'line-error'
+        );
+        this.errorLine = null;
+      }
+    }
+  }
+
   cleanInputText() {
-    this.formControlInputText.reset();
+    this.formControlInputText.patchValue('');
     this.showAlert = false;
     this.validateError = '';
   }
@@ -293,5 +343,13 @@ export class HomeFeatureComponent
     if (input) {
       input.focus();
     }
+  }
+
+  passCodeMirrorComponent(editor: CodemirrorComponent) {
+    this.codemirrorInstance = editor.codeMirror;
+  }
+
+  formatCodeOnLeft() {
+    this.formControlInputText.patchValue(this.validatedJSON);
   }
 }

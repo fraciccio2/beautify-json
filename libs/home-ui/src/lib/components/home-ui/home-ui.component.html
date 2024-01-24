@@ -2,10 +2,14 @@
   <div class="row m-0 w-100 pt-5 h-100">
     <div class="col-md-5 col-sm-12 text-center data-col">
       <beautify-json-left-card-ui
+        [validatedJSON]="validatedJSON"
         [formControlInputText]="formControlInputText"
+        [codeMirrorOptions]="codeMirrorOptions"
         (cleanInputText)="cleanInputText.emit()"
         (printJson)="printJson.emit()"
+        (formatCodeOnLeft)="formatCodeOnLeft.emit()"
         (expandSection)="expandSection.emit($event)"
+        (passCodeMirrorComponent)="passCodeMirrorComponent.emit($event)"
       ></beautify-json-left-card-ui>
     </div>
     <div class="col-md-2 col-sm-12 text-center">
@@ -54,10 +58,14 @@
     *ngIf="showExpandedUi"
     class="d-block w-100 h-100"
     [showExpanded]="showExpandedUi"
+    [validatedJSON]="validatedJSON"
     [formControlInputText]="formControlInputText"
+    [codeMirrorOptions]="codeMirrorOptions"
     (cleanInputText)="cleanInputText.emit()"
     (printJson)="printJson.emit()"
+    (formatCodeOnLeft)="formatCodeOnLeft.emit()"
     (contractSection)="contractSection.emit($event)"
+    (passCodeMirrorComponent)="passCodeMirrorComponent.emit($event)"
   ></beautify-json-left-card-ui>
   <beautify-json-right-card-ui
     *ngIf="showExpandedSub"

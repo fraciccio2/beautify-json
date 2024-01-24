@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   BeautySubFeatureComponent,
+  CodeSubFeatureComponent,
   TextSubFeatureComponent,
   ViewerSubFeatureComponent,
 } from './components';
@@ -18,6 +19,7 @@ import { TranslateModule } from '@ngx-translate/core';
     LoadDataUrlModalComponent,
     TextSubFeatureComponent,
     ErrorModalComponent,
+    CodeSubFeatureComponent,
   ],
   exports: [
     ViewerSubFeatureComponent,
@@ -25,6 +27,7 @@ import { TranslateModule } from '@ngx-translate/core';
     LoadDataUrlModalComponent,
     TextSubFeatureComponent,
     ErrorModalComponent,
+    CodeSubFeatureComponent,
   ],
 })
 export class HomeSubFeatureModule {}

@@ -1,4 +1,8 @@
 @import "bootstrap-icons/font/bootstrap-icons";
+@import '~codemirror/lib/codemirror.css';
+@import '~codemirror/theme/material.css';
+@import '~codemirror/addon/fold/foldgutter.css';
+@import '~codemirror/addon/lint/lint.css';
 
 :root {
   --navbar-height: 4rem;
@@ -36,4 +40,10 @@ button:disabled {
 
 .highlighted {
   background-color: #ffe665;
+}
+
+.line-error + div + .CodeMirror-line {
+  span[role=presentation] {
+    background-color: #FBE3E4;
+  }
 }

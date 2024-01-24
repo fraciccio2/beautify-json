@@ -1,5 +1,6 @@
 import {
   BeautySubFeatureComponent,
+  CodeSubFeatureComponent,
   TextSubFeatureComponent,
   ViewerSubFeatureComponent,
 } from '@beautify-json/home-sub-feature';
@@ -7,4 +8,5 @@ import {
 export type JsonTemplateType =
   | ViewerSubFeatureComponent
   | BeautySubFeatureComponent
-  | TextSubFeatureComponent;
+  | TextSubFeatureComponent
+  | CodeSubFeatureComponent;

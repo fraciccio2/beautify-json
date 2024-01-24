@@ -6,3 +6,4 @@ export * from './right-card-ui/right-card-ui.component';
 export * from './left-card-ui/left-card-ui.component';
 export * from './text-ui/text-ui.component';
 export * from './info-ui/info-ui.component';
+export * from './code-ui/code-ui.component';

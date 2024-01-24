@@ -1,0 +1,7 @@
+<ngx-codemirror
+  *ngIf="codeMirrorOptions"
+  class="d-block h-100 text-start"
+  [options]="codeMirrorOptions"
+  [(ngModel)]="validatedJSON"
+  [disabled]="true"
+></ngx-codemirror>

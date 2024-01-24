@@ -1,5 +1,6 @@
 export enum JsonTemplateEnum {
   BEAUTY = 1,
-  TEXT = 2,
-  VIEWER = 3,
+  CODE = 2,
+  TEXT = 3,
+  VIEWER = 4,
 }
