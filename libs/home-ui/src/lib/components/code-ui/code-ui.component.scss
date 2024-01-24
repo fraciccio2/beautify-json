@@ -1,0 +1,7 @@
+::ng-deep ngx-codemirror {
+  .CodeMirror {
+    height: 100%;
+    border-bottom-right-radius: var(--border-radius-c);
+    border-bottom-left-radius: var(--border-radius-c);
+  }
+}

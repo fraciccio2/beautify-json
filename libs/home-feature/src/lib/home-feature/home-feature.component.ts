@@ -17,6 +17,7 @@ import {
 } from '@beautify-json/home-util';
 import {
   BeautySubFeatureComponent,
+  CodeSubFeatureComponent,
   ErrorModalComponent,
   LoadDataUrlModalComponent,
   TextSubFeatureComponent,
@@ -56,6 +57,7 @@ import * as CodeMirror from 'codemirror';
     (orderAsc)="orderAsc()"
     (orderDesc)="orderDesc()"
     (focusOnInput)="focusOnInput()"
+    (formatCodeOnLeft)="formatCodeOnLeft()"
     (expandSection)="
       $event === RightOrLeftTemplateEnum.left
         ? (showExpandedUi = true)
@@ -156,6 +158,13 @@ export class HomeFeatureComponent
           beautifyJSON: this.beautifyJSON,
         };
         this.currentTemplate = BeautySubFeatureComponent;
+        break;
+      case JsonTemplateEnum.CODE:
+        this.inputs = {
+          codeMirrorOptions: { ...this.codeMirrorOptions, readOnly: true },
+          validatedJSON: this.validatedJSON,
+        };
+        this.currentTemplate = CodeSubFeatureComponent;
         break;
       case JsonTemplateEnum.VIEWER:
         this.inputs = {
@@ -338,5 +347,9 @@ export class HomeFeatureComponent
 
   passCodeMirrorComponent(editor: CodemirrorComponent) {
     this.codemirrorInstance = editor.codeMirror;
+  }
+
+  formatCodeOnLeft() {
+    this.formControlInputText.patchValue(this.validatedJSON);
   }
 }

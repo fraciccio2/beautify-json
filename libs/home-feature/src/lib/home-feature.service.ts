@@ -10,12 +10,16 @@ export class HomeFeatureService {
       id: 1,
     },
     {
-      label: 'HomeFeature.Text',
+      label: 'HomeFeature.Code',
       id: 2,
     },
     {
-      label: 'HomeFeature.Tree',
+      label: 'HomeFeature.Text',
       id: 3,
+    },
+    {
+      label: 'HomeFeature.Tree',
+      id: 4,
     },
   ];
 

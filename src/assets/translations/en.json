@@ -1,5 +1,6 @@
 {
   "HomeFeature.Beautify": "Beautify",
+  "HomeFeature.Code": "Code",
   "HomeFeature.Tree": "Tree",
   "HomeFeature.Text": "Text",
   "HomeFeature.EmptyText": "No JSON was inserted. Write something and try again.",
@@ -13,6 +14,7 @@
   "HomeUi.ValidJ": "Valid JSON",
   "HomeUi.Copy": "Copy",
   "HomeUi.Copied": "Copied",
+  "HomeUi.Format": "Format JSON",
   "HomeUi.Print": "Print",
   "HomeUi.Delete": "Clear",
   "HomeUi.Expand": "Expand section",

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {
   ActionUiComponent,
   BeautyUiComponent,
+  CodeUiComponent,
   HomeUiComponent,
   InfoUiComponent,
   LeftCardUiComponent,
@@ -38,6 +39,7 @@ import { CodemirrorModule } from '@ctrl/ngx-codemirror';
     LeftCardUiComponent,
     TextUiComponent,
     InfoUiComponent,
+    CodeUiComponent,
   ],
   exports: [
     HomeUiComponent,
@@ -48,6 +50,7 @@ import { CodemirrorModule } from '@ctrl/ngx-codemirror';
     LeftCardUiComponent,
     TextUiComponent,
     InfoUiComponent,
+    CodeUiComponent,
   ],
 })
 export class HomeUiModule {}

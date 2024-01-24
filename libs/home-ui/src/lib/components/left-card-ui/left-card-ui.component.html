@@ -1,6 +1,12 @@
 <div class="card" [ngClass]="{ 'h-100': showExpanded }">
   <div class="card-header d-flex justify-content-end align-items-center">
     <i
+      class="bi bi-magic me-2"
+      *ngIf="validatedJSON && formControlInputText?.value"
+      [ngbTooltip]="'HomeUi.Format' | translate"
+      (click)="formatCodeOnLeft.emit()"
+    ></i>
+    <i
       class="bi bi-printer-fill me-2"
       [ngbTooltip]="'HomeUi.Print' | translate"
       (click)="printJson.emit()"

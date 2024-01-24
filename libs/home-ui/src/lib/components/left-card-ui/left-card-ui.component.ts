@@ -10,12 +10,14 @@ import { CodemirrorComponent } from '@ctrl/ngx-codemirror';
 })
 export class LeftCardUiComponent {
   @Input() showExpanded: boolean | undefined;
+  @Input() validatedJSON: string | undefined;
   @Input() formControlInputText: FormControl | undefined;
   @Input() codeMirrorOptions:
     | { [key: string]: boolean | string | string[] }
     | undefined;
   @Output() cleanInputText = new EventEmitter<void>();
   @Output() printJson = new EventEmitter<void>();
+  @Output() formatCodeOnLeft = new EventEmitter<void>();
   @Output() expandSection = new EventEmitter<RightOrLeftTemplateEnum>();
   @Output() contractSection = new EventEmitter<RightOrLeftTemplateEnum>();
   @Output() passCodeMirrorComponent = new EventEmitter<CodemirrorComponent>();
