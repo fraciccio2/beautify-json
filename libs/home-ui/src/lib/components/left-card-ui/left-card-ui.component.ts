@@ -11,6 +11,7 @@ import { CodemirrorComponent } from '@ctrl/ngx-codemirror';
 export class LeftCardUiComponent {
   @Input() showExpanded: boolean | undefined;
   @Input() validatedJSON: string | undefined;
+  @Input() validateError: string | undefined;
   @Input() formControlInputText: FormControl | undefined;
   @Input() codeMirrorOptions:
     | { [key: string]: boolean | string | string[] }

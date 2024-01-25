@@ -23,6 +23,10 @@
       "@beautify-json/home-util": ["libs/home-util/src/index.ts"],
       "@beautify-json/navbar-feature": ["libs/navbar-feature/src/index.ts"],
       "@beautify-json/navbar-ui": ["libs/navbar-ui/src/index.ts"],
+      "@beautify-json/not-found-feature": [
+        "libs/not-found-feature/src/index.ts"
+      ],
+      "@beautify-json/not-found-ui": ["libs/not-found-ui/src/index.ts"],
       "@beautify-json/privacy-feature": ["libs/privacy-feature/src/index.ts"],
       "@beautify-json/privacy-ui": ["libs/privacy-ui/src/index.ts"]
     }
