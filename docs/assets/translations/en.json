@@ -56,5 +56,6 @@
   "PrivacyUi.ContactTitle": "Contact Us",
   "PrivacyUi.Contact": "If you have any questions or concerns regarding this Privacy Policy, you can contact us at",
   "PrivacyUi.Git": "Github page.",
-  "PrivacyUi.Thanks": "Thank you for your trust and understanding."
+  "PrivacyUi.Thanks": "Thank you for your trust and understanding.",
+  "NotFoundUi.GoToHome": "Go to Home"
 }
