@@ -2,7 +2,7 @@
   <div class="card-header d-flex justify-content-end align-items-center">
     <i
       class="bi bi-magic me-2"
-      *ngIf="validatedJSON && formControlInputText?.value"
+      *ngIf="validatedJSON && formControlInputText?.value && !validateError"
       [ngbTooltip]="'HomeUi.Format' | translate"
       (click)="formatCodeOnLeft.emit()"
     ></i>

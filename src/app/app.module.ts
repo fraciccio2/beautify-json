@@ -9,6 +9,7 @@ import * as it from '../assets/translations/it.json';
 import * as en from '../assets/translations/en.json';
 import { FooterUiModule } from '@beautify-json/footer-ui';
 import { PrivacyFeatureModule } from '@beautify-json/privacy-feature';
+import { NotFoundFeatureModule } from '@beautify-json/not-found-feature';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,7 +18,7 @@ import { PrivacyFeatureModule } from '@beautify-json/privacy-feature';
     RouterModule.forRoot([
       {
         path: '**',
-        redirectTo: '',
+        redirectTo: '/404',
       },
     ]),
     TranslateModule.forRoot({
@@ -26,6 +27,7 @@ import { PrivacyFeatureModule } from '@beautify-json/privacy-feature';
     NavbarFeatureModule,
     HomeFeatureModule,
     PrivacyFeatureModule,
+    NotFoundFeatureModule,
     FooterUiModule,
   ],
   bootstrap: [AppComponent],
