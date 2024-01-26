@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { RightOrLeftTemplateEnum } from '@beautify-json/home-util';
 import { CodemirrorComponent } from '@ctrl/ngx-codemirror';
@@ -8,7 +14,7 @@ import { CodemirrorComponent } from '@ctrl/ngx-codemirror';
   templateUrl: './left-card-ui.component.html',
   styleUrl: './left-card-ui.component.scss',
 })
-export class LeftCardUiComponent {
+export class LeftCardUiComponent implements AfterViewInit {
   @Input() showExpanded: boolean | undefined;
   @Input() validatedJSON: string | undefined;
   @Input() validateError: string | undefined;
@@ -25,4 +31,9 @@ export class LeftCardUiComponent {
 
   isCopy = false;
   protected readonly RightOrLeftTemplateEnum = RightOrLeftTemplateEnum;
+  show = false;
+
+  ngAfterViewInit() {
+    this.show = true;
+  }
 }
