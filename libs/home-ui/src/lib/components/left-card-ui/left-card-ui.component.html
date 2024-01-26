@@ -42,6 +42,7 @@
   </div>
   <div class="card-body" *ngIf="formControlInputText && codeMirrorOptions">
     <ngx-codemirror
+      *ngIf="codeMirrorOptions && show"
       class="d-block h-100 text-start"
       [options]="codeMirrorOptions"
       [formControl]="formControlInputText"
