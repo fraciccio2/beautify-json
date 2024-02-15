@@ -57,5 +57,8 @@
   "PrivacyUi.Contact": "Se hai domande o preoccupazioni riguardo a questa Privacy Policy, puoi contattarci alla nostra",
   "PrivacyUi.Git": "pagina GitHub.",
   "PrivacyUi.Thanks": "Grazie per la fiducia e la comprensione.",
-  "NotFoundUi.GoToHome": "Torna alla Home"
+  "NotFoundUi.GoToHome": "Torna alla Home",
+  "NavbarUi.Auto": "Automatico",
+  "NavbarUi.Dark": "Scuro",
+  "NavbarUi.Light": "Chiaro"
 }
