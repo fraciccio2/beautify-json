@@ -356,6 +356,10 @@ export class HomeFeatureComponent
 
   passCodeMirrorComponent(editor: CodemirrorComponent) {
     this.codemirrorInstance = editor.codeMirror;
+    const codeGutters = document.querySelector('.CodeMirror-gutter');
+    if (codeGutters && codeGutters.clientWidth > 500) {
+      this.codemirrorInstance?.refresh();
+    }
   }
 
   formatCodeOnLeft() {
