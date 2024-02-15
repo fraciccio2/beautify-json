@@ -1,4 +1,7 @@
-<div class="card" [ngClass]="{ 'h-100': showExpanded }">
+<div
+  class="card"
+  [ngClass]="{ 'h-100': showExpanded, 'dark-style': darkStyle }"
+>
   <div class="card-header d-flex align-items-center">
     <select
       class="form-select w-auto py-0"
@@ -48,6 +51,7 @@
         <i
           class="bi bi-search me-2"
           [ngbPopover]="popContent"
+          [popoverClass]="darkStyle ? 'dark-style-popover' : ''"
           container="body"
           [autoClose]="false"
           (shown)="focusOnInput.emit()"

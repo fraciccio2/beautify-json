@@ -1,10 +1,13 @@
 @import "bootstrap-icons/font/bootstrap-icons";
+@import "~codemirror/theme/erlang-dark.css";
 
 :root {
   --navbar-height: 4rem;
   --border-radius-c: 20px;
   --blue-color: #add8e6;
-  //--blue-color: #0051FF;
+  --blue-color-dark: #0F172AFF;
+  --card-header-color-dark: #475569;
+  --card-body-color-dark: #002240;
 }
 
 ::-webkit-scrollbar-track {
@@ -19,10 +22,20 @@
   background-color: #F5F5F5;
 }
 
-::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
-  background-color: var(--blue-color);
+.dark-theme {
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: var(--blue-color-dark);
+  }
+}
+
+.light-theme {
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: var(--blue-color);
+  }
 }
 
 button:disabled {
@@ -38,8 +51,26 @@ button:disabled {
   background-color: #ffe665;
 }
 
+.dark-theme {
+  .highlighted {
+    background-color: #FF4B55;
+  }
+}
+
 .line-error + div + .CodeMirror-line {
   span[role=presentation] {
     background-color: #FBE3E4;
+  }
+}
+
+.dark-style-popover {
+  .popover-body {
+    background-color: var(--blue-color-dark);
+    border: 1px solid white;
+    border-radius: 8px;
+
+    .bi {
+      color: white;
+    }
   }
 }

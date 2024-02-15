@@ -1,4 +1,4 @@
-<ul class="list-node" *ngIf="jsonData">
+<ul class="list-node" *ngIf="jsonData" [ngClass]="{ 'dark-style': darkStyle }">
   <li *ngFor="let item of getObjectKeys(jsonData, order)" class="text-start">
     <span class="toggle-icon">
       <span
@@ -21,6 +21,7 @@
           :
           <beautify-json-viewer-ui
             [jsonData]="jsonData[item]"
+            [darkStyle]="darkStyle"
             [filterObj]="
               !!inputText &&
               !(item + parent).toLowerCase().includes(inputText.toLowerCase())

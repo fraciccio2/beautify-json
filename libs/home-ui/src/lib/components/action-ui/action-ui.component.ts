@@ -8,6 +8,7 @@ import { FormControl } from '@angular/forms';
 })
 export class ActionUiComponent {
   @Input() showAlert: boolean | undefined;
+  @Input() darkStyle: boolean | undefined | null;
   @Input() validateError: string | undefined;
   @Input() validatedJSON: string | undefined;
   @Input() formControlInputText: FormControl | undefined;

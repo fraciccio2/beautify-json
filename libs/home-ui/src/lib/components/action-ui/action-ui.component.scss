@@ -4,4 +4,8 @@
   .btn {
     border-radius: var(--border-radius-c);
   }
+
+  &.dark-style {
+    background-color: var(--card-body-color-dark);
+  }
 }

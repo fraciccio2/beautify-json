@@ -1,0 +1,38 @@
+<div
+  ngbDropdown
+  class="d-inline-block dropdown-theme"
+  [ngClass]="{ 'dark-style': darkStyle }"
+>
+  <button
+    type="button"
+    class="btn btn-link btn-dropdown"
+    id="dropdownBasic1"
+    ngbDropdownToggle
+  >
+    <i
+      class="bi me-1"
+      [ngClass]="{
+        'bi-circle-half': selectedTheme === 'auto',
+        'bi-moon-stars-fill': selectedTheme === 'dark',
+        'bi-brightness-high-fill': selectedTheme === 'light'
+      }"
+    ></i>
+  </button>
+  <div
+    ngbDropdownMenu
+    aria-labelledby="dropdownBasic1"
+    class="dropdown-theme__menu"
+  >
+    <button ngbDropdownItem (click)="setTheme.emit('auto')">
+      <i class="bi bi-circle-half me-1"></i>{{ 'NavbarUi.Auto' | translate }}
+    </button>
+    <button ngbDropdownItem (click)="setTheme.emit('dark')">
+      <i class="bi bi-moon-stars-fill me-1"></i
+      >{{ 'NavbarUi.Dark' | translate }}
+    </button>
+    <button ngbDropdownItem (click)="setTheme.emit('light')">
+      <i class="bi bi-brightness-high-fill me-1"></i
+      >{{ 'NavbarUi.Light' | translate }}
+    </button>
+  </div>
+</div>

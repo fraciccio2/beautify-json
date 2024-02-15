@@ -1,10 +1,27 @@
-<nav class="navbar navbar-light bg-light">
+<nav
+  class="navbar navbar-light bg-light"
+  [ngClass]="{ 'dark-style': darkStyle }"
+>
   <a class="navbar-brand" href="">
-    <img src="assets/img/logo/Logo.png" height="45" alt="" />
+    <img
+      [src]="
+        darkStyle ? 'assets/img/logo/LogoDark.png' : 'assets/img/logo/Logo.png'
+      "
+      height="45"
+      alt=""
+    />
   </a>
-  <beautify-json-dropdown-language-ui
-    class="d-block me-3"
-    [languages]="languages"
-    [formControlLanguage]="formControlLanguage"
-  ></beautify-json-dropdown-language-ui>
+  <div class="d-flex align-items-center justify-content-center">
+    <beautify-json-dropdown-theme-ui
+      [darkStyle]="darkStyle"
+      [selectedTheme]="selectedTheme"
+      (setTheme)="setTheme.emit($event)"
+    ></beautify-json-dropdown-theme-ui>
+    <beautify-json-dropdown-language-ui
+      class="d-block mx-3"
+      [darkStyle]="darkStyle"
+      [languages]="languages"
+      [formControlLanguage]="formControlLanguage"
+    ></beautify-json-dropdown-language-ui>
+  </div>
 </nav>

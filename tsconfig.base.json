@@ -23,6 +23,7 @@
       "@beautify-json/home-util": ["libs/home-util/src/index.ts"],
       "@beautify-json/navbar-feature": ["libs/navbar-feature/src/index.ts"],
       "@beautify-json/navbar-ui": ["libs/navbar-ui/src/index.ts"],
+      "@beautify-json/ng": ["libs/ng/src/index.ts"],
       "@beautify-json/not-found-feature": [
         "libs/not-found-feature/src/index.ts"
       ],

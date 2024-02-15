@@ -7,6 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class ViewerUiComponent {
   @Input() jsonData: any;
+  @Input() darkStyle: boolean | undefined | null;
   @Input() filterObj: boolean = true;
   @Input() inputText: string | undefined;
   @Input() expandedNodes: string[] = [];

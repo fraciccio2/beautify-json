@@ -1,15 +1,18 @@
 import {
   Component,
   EventEmitter,
+  inject,
   Input,
   OnChanges,
   OnInit,
   SimpleChanges,
 } from '@angular/core';
+import { NgThemeService } from '@beautify-json/ng';
 
 @Component({
   selector: 'beautify-json-viewer-sub-feature',
   template: `<beautify-json-viewer-ui
+    [darkStyle]="ngThemeService.darkStyle$ | async"
     [inputText]="inputText"
     [expandedNodes]="expandedNodes"
     [jsonData]="jsonData"
@@ -29,6 +32,8 @@ export class ViewerSubFeatureComponent implements OnInit, OnChanges {
   jsonData: any;
   expandedNodes: string[] = [];
   order: 'asc' | 'desc' | '' = '';
+
+  protected ngThemeService = inject(NgThemeService);
 
   ngOnInit() {
     if (this.collapseAllEmit) {

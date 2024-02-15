@@ -17,6 +17,7 @@ export class HomeUiComponent {
   @Input() showLoader: boolean | undefined;
   @Input() showExpandedUi: boolean | undefined;
   @Input() showExpandedSub: boolean | undefined;
+  @Input() darkStyle: boolean | undefined | null;
   @Input() validateError: string | undefined;
   @Input() beautifyJSON: string | undefined;
   @Input() validatedJSON: string | undefined;

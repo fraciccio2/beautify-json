@@ -14,6 +14,7 @@ import { FormControl } from '@angular/forms';
 })
 export class RightCardUiComponent {
   @Input() showExpanded: boolean | undefined;
+  @Input() darkStyle: boolean | undefined | null;
   @Input() beautifyJSON: string | undefined;
   @Input() validatedJSON: string | undefined;
   @Input() inputs: InputTemplateModel | undefined;

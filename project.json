@@ -26,9 +26,9 @@
         ],
         "styles": [
           "./src/styles.scss",
-          "node_modules/bootstrap/dist/css/bootstrap.min.css",
           "node_modules/codemirror/lib/codemirror.css",
-          "node_modules/codemirror/addon/fold/foldgutter.css"
+          "node_modules/codemirror/addon/fold/foldgutter.css",
+          "node_modules/bootstrap/dist/css/bootstrap.min.css"
         ],
         "scripts": []
       },

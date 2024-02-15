@@ -30,4 +30,23 @@
       }
     }
   }
+
+  &.dark-style {
+
+    .line-container {
+      border-right: 1px solid #d0d0d0;
+
+      .line-number-right {
+        display: flex;
+        flex-direction: column;
+        text-align: end;
+        color: #d0d0d0;
+      }
+    }
+
+    .custom-textarea {
+      background-color: var(--card-body-color-dark);
+      color: white;
+    }
+  }
 }
