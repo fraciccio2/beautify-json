@@ -30,6 +30,7 @@ import { HomeFeatureService } from '../home-feature.service';
 import { CodemirrorComponent } from '@ctrl/ngx-codemirror';
 import * as CodeMirror from 'codemirror';
 import { NgThemeService } from '@beautify-json/ng';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'beautify-json-home-feature',
@@ -81,6 +82,7 @@ export class HomeFeatureComponent
   private cdRef = inject(ChangeDetectorRef);
   private modalService = inject(NgbModal);
   private httpClient = inject(HttpClient);
+  private router = inject(Router);
   protected ngThemeService = inject(NgThemeService);
   protected homeFeatureService = inject(HomeFeatureService);
   protected readonly RightOrLeftTemplateEnum = RightOrLeftTemplateEnum;
@@ -358,7 +360,9 @@ export class HomeFeatureComponent
     this.codemirrorInstance = editor.codeMirror;
     const codeGutters = document.querySelector('.CodeMirror-gutter');
     if (codeGutters && codeGutters.clientWidth > 500) {
-      this.codemirrorInstance?.refresh();
+      this.router
+        .navigateByUrl('', { skipLocationChange: true })
+        .catch((e) => console.error(e));
     }
   }
 
