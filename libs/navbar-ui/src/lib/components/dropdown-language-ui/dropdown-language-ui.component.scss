@@ -35,6 +35,32 @@ btn-dropdown:focus-visible,
       height: $flagSize;
     }
   }
+
+  &.dark-style {
+    .btn-dropdown {
+      color: white;
+      &:hover {
+        border-color: white !important;
+      }
+
+      &:focus {
+        border-color: white !important;
+      }
+
+      &:active {
+        border-color: white !important;
+      }
+    }
+
+    .dropdown-language__menu {
+      background-color: var(--card-header-color-dark);
+
+      .dropdown-item {
+        background-color: var(--card-header-color-dark);
+        color: white;
+      }
+    }
+  }
 }
 
 @media (min-width: 992px) {

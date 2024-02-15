@@ -15,4 +15,9 @@
       padding-left: 5rem;
     }
   }
+
+  &.dark-style {
+    background-color: var(--blue-color-dark);
+    color: white;
+  }
 }

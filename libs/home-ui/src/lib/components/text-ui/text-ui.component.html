@@ -1,4 +1,8 @@
-<div class="row m-0 w-100" *ngIf="formControlInputTextSub">
+<div
+  class="row m-0 w-100"
+  *ngIf="formControlInputTextSub"
+  [ngClass]="{ 'dark-style': darkStyle }"
+>
   <div class="col-auto line-container">
     <div class="line-number-right">
       <div

@@ -1,4 +1,7 @@
-<div class="card" [ngClass]="{ 'h-100': showExpanded }">
+<div
+  class="card"
+  [ngClass]="{ 'h-100': showExpanded, 'dark-style': darkStyle }"
+>
   <div class="card-header d-flex align-items-center">
     <select
       class="form-select w-auto py-0"

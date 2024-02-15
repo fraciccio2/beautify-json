@@ -7,5 +7,6 @@ import { FormControl } from '@angular/forms';
   styleUrl: './text-ui.component.scss',
 })
 export class TextUiComponent {
+  @Input() darkStyle: boolean | undefined | null;
   @Input() formControlInputTextSub: FormControl | undefined;
 }

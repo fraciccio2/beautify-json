@@ -25,10 +25,11 @@ import {
 } from '@beautify-json/home-sub-feature';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient } from '@angular/common/http';
-import { finalize, take } from 'rxjs';
+import { distinctUntilChanged, finalize, take } from 'rxjs';
 import { HomeFeatureService } from '../home-feature.service';
 import { CodemirrorComponent } from '@ctrl/ngx-codemirror';
 import * as CodeMirror from 'codemirror';
+import { NgThemeService } from '@beautify-json/ng';
 
 @Component({
   selector: 'beautify-json-home-feature',
@@ -37,6 +38,7 @@ import * as CodeMirror from 'codemirror';
     [showLoader]="showLoader"
     [showExpandedUi]="showExpandedUi"
     [showExpandedSub]="showExpandedSub"
+    [darkStyle]="ngThemeService.darkStyle$ | async"
     [validateError]="validateError"
     [beautifyJSON]="beautifyJSON"
     [validatedJSON]="validatedJSON"
@@ -79,6 +81,7 @@ export class HomeFeatureComponent
   private cdRef = inject(ChangeDetectorRef);
   private modalService = inject(NgbModal);
   private httpClient = inject(HttpClient);
+  protected ngThemeService = inject(NgThemeService);
   protected homeFeatureService = inject(HomeFeatureService);
   protected readonly RightOrLeftTemplateEnum = RightOrLeftTemplateEnum;
 
@@ -123,6 +126,7 @@ export class HomeFeatureComponent
     mode: 'javascript',
     foldGutter: true,
     gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
+    theme: 'default',
   };
   inputs: InputTemplateModel = {};
   codemirrorInstance: CodeMirror.EditorFromTextArea | undefined;
@@ -141,6 +145,11 @@ export class HomeFeatureComponent
         inputText: changes ?? '',
       };
     });
+    this.ngThemeService.darkStyle$
+      .pipe(distinctUntilChanged())
+      .subscribe((value) => {
+        this.codeMirrorOptions['theme'] = value ? 'erlang-dark' : 'default';
+      });
   }
 
   ngAfterViewInit() {

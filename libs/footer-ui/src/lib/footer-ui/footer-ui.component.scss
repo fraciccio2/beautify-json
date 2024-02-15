@@ -22,6 +22,18 @@
     text-decoration: underline !important;
   }
 
+  &.dark-style {
+    background-color: var(--blue-color-dark) !important;
+
+    .created {
+      color: white !important;
+    }
+
+    .icon {
+      color: white !important;
+    }
+  }
+
   @media (max-width: 767px) {
     p {
       font-size: small;

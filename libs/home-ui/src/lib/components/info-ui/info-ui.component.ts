@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'beautify-json-info-ui',
@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrl: './info-ui.component.scss',
 })
 export class InfoUiComponent {
+  @Input() darkStyle: boolean | undefined | null;
   JSONExample = `{
   "person": {
     "name": "John Doe",

@@ -27,4 +27,33 @@ $card-header-height: 2.5rem;
       }
     }
   }
+
+  &.dark-style {
+    background-color: var(--card-header-color-dark);
+    .card-header {
+      background-color: var(--card-header-color-dark);
+      .bi {
+        color: var(--blue-color-dark);
+
+        &:hover {
+          color: #6685d5;
+        }
+      }
+    }
+
+    //.card-body {
+    //  background-color: #334155;
+    //  ::ng-deep ngx-codemirror {
+    //    .CodeMirror {
+    //
+    //      .CodeMirror-scroll {
+    //        background-color: #334155;
+    //        .CodeMirror-gutters {
+    //          background-color: var(--card-header-color-dark);
+    //        }
+    //      }
+    //    }
+    //  }
+    //}
+  }
 }

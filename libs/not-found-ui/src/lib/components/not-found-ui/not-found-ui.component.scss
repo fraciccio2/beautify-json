@@ -1,13 +1,3 @@
-.contain-page {
-  background-color: var(--blue-color);
-  font-family: 'Concert One', cursive;
-  margin: 0;
-  overflow: hidden;
-  padding: 0;
-  width: 100%;
-  height: calc(100vh - var(--navbar-height));
-}
-
 $color-black: #13242C;
 $color-white: #fff;
 $color-red-1: #D13433;
@@ -18,6 +8,31 @@ $color-skin-3: #B2524D;
 $color-hair: #13242C;
 $color-wood-1: #601513;
 $color-wood-2: #410A09;
+
+.contain-page {
+  background-color: var(--blue-color);
+  font-family: 'Concert One', cursive;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  width: 100%;
+  height: calc(100vh - var(--navbar-height));
+
+  &.dark-style {
+    background-color: var(--blue-color-dark);
+
+    .text {
+      color: rgba($color-red-1, 0.4);
+    }
+
+    .button-go-home {
+      .btn-home {
+        background-color: $color-hair;
+        color: $color-red-1;
+      }
+    }
+  }
+}
 
 @mixin position {
   position: absolute;

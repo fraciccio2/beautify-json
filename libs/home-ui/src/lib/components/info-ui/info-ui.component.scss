@@ -2,4 +2,14 @@
   padding-bottom: 5rem;
   width: 60%;
   padding-left: calc(var(--bs-gutter-x) * .5);
+
+  &.dark-style {
+    * {
+      color: white !important;
+    }
+
+    pre {
+      background-color: var(--card-body-color-dark) !important;
+    }
+  }
 }

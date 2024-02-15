@@ -8,6 +8,7 @@ import { FormControl } from '@angular/forms';
   styleUrl: './dropdown-language-ui.component.scss',
 })
 export class DropdownLanguageUiComponent {
+  @Input() darkStyle: boolean | undefined | null;
   @Input() languages: LanguageModel[] | undefined;
   @Input() formControlLanguage: FormControl | undefined;
 }

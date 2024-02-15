@@ -1,5 +1,5 @@
-<div class="my-footer">
-  <p class="text-center text-muted">
+<div class="my-footer" [ngClass]="{ 'dark-style': darkStyle }">
+  <p class="text-center text-muted created">
     {{ 'FooterUi.Created' | translate }}
   </p>
   <a href="https://github.com/fraciccio2" target="_blank" class="icon"

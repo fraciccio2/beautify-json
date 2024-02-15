@@ -1,4 +1,8 @@
-<div ngbDropdown class="dropdown-language d-inline-block div-dropdown">
+<div
+  ngbDropdown
+  class="dropdown-language d-inline-block div-dropdown"
+  [ngClass]="{ 'dark-style': darkStyle }"
+>
   <button type="button" class="btn btn-dropdown" ngbDropdownToggle>
     <img [src]="formControlLanguage?.value?.img" class="me-2" />
     {{ formControlLanguage?.value?.text }}

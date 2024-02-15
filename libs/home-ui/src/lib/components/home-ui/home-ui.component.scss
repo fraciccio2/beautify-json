@@ -6,6 +6,10 @@
   .data-col {
     max-height: 100%;
   }
+
+  &.dark-style {
+    background-color: var(--blue-color-dark) !important;
+  }
 }
 
 .big-spinner {

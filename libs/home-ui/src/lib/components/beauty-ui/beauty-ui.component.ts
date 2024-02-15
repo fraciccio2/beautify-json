@@ -7,4 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class BeautyUiComponent {
   @Input() beautifyJSON: string | undefined;
+  @Input() darkStyle: boolean | undefined | null;
 }
