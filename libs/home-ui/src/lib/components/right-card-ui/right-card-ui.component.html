@@ -51,6 +51,7 @@
         <i
           class="bi bi-search me-2"
           [ngbPopover]="popContent"
+          [popoverClass]="darkStyle ? 'dark-style-popover' : ''"
           container="body"
           [autoClose]="false"
           (shown)="focusOnInput.emit()"

@@ -51,8 +51,26 @@ button:disabled {
   background-color: #ffe665;
 }
 
+.dark-theme {
+  .highlighted {
+    background-color: #FF4B55;
+  }
+}
+
 .line-error + div + .CodeMirror-line {
   span[role=presentation] {
     background-color: #FBE3E4;
+  }
+}
+
+.dark-style-popover {
+  .popover-body {
+    background-color: var(--blue-color-dark);
+    border: 1px solid white;
+    border-radius: 8px;
+
+    .bi {
+      color: white;
+    }
   }
 }
