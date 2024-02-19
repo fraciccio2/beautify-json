@@ -17,4 +17,12 @@
     background-color: var(--card-header-color-dark) !important;
     border-bottom: 1px solid var(--blue-color-dark);
   }
+
+  @media (max-width: 767px) {
+    .navbar-brand {
+      img {
+        height: 38px;
+      }
+    }
+  }
 }

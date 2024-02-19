@@ -36,8 +36,12 @@
 
   @media (max-width: 767px) {
     p {
-      font-size: small;
+      font-size: x-small;
       margin-bottom: 0;
+    }
+
+    a {
+      padding-bottom: 0 !important;
     }
   }
 }
