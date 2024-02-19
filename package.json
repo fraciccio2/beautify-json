@@ -1,13 +1,13 @@
 {
   "name": "@beautify-json/source",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "license": "MIT",
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
     "build github": "nx build --output-path=docs --base-href=/beautify-json/",
-    "build github no base-href": "nx build --output-path=docs"
+    "build github no base-href": "nx build --output-path=docs && node scripts/postbuild.js"
   },
   "private": true,
   "dependencies": {
