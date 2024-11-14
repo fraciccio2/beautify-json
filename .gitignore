@@ -41,5 +41,6 @@ testem.log
 Thumbs.db
 
 .nx/cache
+.nx/workspace-data
 .angular
 package-lock.json

@@ -3,8 +3,8 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/home-util/src",
   "prefix": "beautify-json",
-  "tags": ["util"],
   "projectType": "library",
+  "tags": ["util"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
@@ -14,8 +14,7 @@
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
+      "executor": "@nx/eslint:lint"
     }
   }
 }
